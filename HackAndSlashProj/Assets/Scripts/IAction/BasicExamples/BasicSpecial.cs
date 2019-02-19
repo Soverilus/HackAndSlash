@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpecialCounter : IActions {
+public class BasicSpecial : IActions {
     public void PerformAction() {
-        Debug.Log("Counter attempt started");
+        Debug.Log("BasicSpecial attempt started");
     }
 }
