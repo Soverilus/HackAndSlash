@@ -10,9 +10,24 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void StartHeavyAttack() {
+
+    }
+
+    public void EndHeavyAttack() {
+
+    }
+
+    public void Stagger() {
+
+    }
+
+    public void Damage() {
+
     }
 }
