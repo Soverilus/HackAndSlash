@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//this class exists only to hold all player character controllers
+//this class exists only to hold all enemy character controllers AS WELL AS creating the basic AI structure for said enemy character controllers.
 public class EnemyController : CreatureController
 {
    /*
