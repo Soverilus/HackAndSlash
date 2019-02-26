@@ -234,6 +234,8 @@ GameObject:
   m_Component:
   - component: {fileID: 552563655}
   - component: {fileID: 552563654}
+  - component: {fileID: 552563657}
+  - component: {fileID: 552563656}
   m_Layer: 0
   m_Name: TestCharacter
   m_TagString: Untagged
@@ -253,16 +255,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79836aa8f54b7b47820e34e6b4fb714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myPlayerController: {fileID: 0}
   isUsingAndroid: 0
+  isTesting: 0
   timer: 15
-  width: 0
-  actTimer: 2
+  timeHeld: 0
+  actTimer: 20
   timerStarted: 0
   rightPhase: 0
   leftPhase: 0
   isHeld: 0
   rightActive: 0
   leftActive: 0
+  doBoth: 0
 --- !u!4 &552563655
 Transform:
   m_ObjectHideFlags: 0
@@ -277,6 +282,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &552563656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552563653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bfbfed97d4d91d4a869460023da57e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &552563657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552563653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a883c4d652844384b85fcef2e0623208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1384600697
 GameObject:
   m_ObjectHideFlags: 0

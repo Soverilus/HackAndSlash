@@ -2,32 +2,48 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+//this class exists only to hold all player character controllers
+public class PlayerController : CreatureController
 {
-    
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
-
-    public void StartHeavyAttack() {
+    /*
+    public override void LightAttack() {
 
     }
 
-    public void EndHeavyAttack() {
+    public override void StartHeavyAttack() {
+           
+    }      
+           
+    public override void EndHeavyAttack() {
+           
+    }
+
+    public override void LightDefend() {
 
     }
 
-    public void Stagger() {
+    public override void StartHeavyDefend() {
+           
+    }      
+           
+    public override void EndHeavyDefend() {
+           
+    }
+
+    public override void LightSpecial() {
 
     }
 
-    public void Damage() {
+    public override void StartHeavySpecial() {
+           
+    }      
+           
+    public override void EndHeavySpecial() {
+           
+    }      
+           
+    public override void Stagger() {
 
     }
+    */
 }

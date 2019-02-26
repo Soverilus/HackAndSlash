@@ -2,12 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using GAV;
+
+[RequireComponent(typeof(PlayerController))]
 public class OnActionPress : MonoBehaviour {
+    [SerializeField] PlayerController myPlayerController;
     [SerializeField] bool isUsingAndroid = true;
+    [SerializeField] bool isTesting = false;
     [Space(20f)]
     [Header("Misc Attributes")]
     [SerializeField] float timer;
-    [SerializeField] float width;
+    [SerializeField] float timeHeld;
+    float width;
     [SerializeField] float actTimer = Mathf.Abs(GlobalActionVariables.myActivationTime);
 
     [SerializeField] bool timerStarted = false;
@@ -17,8 +22,13 @@ public class OnActionPress : MonoBehaviour {
 
     [SerializeField] bool rightActive;
     [SerializeField] bool leftActive;
+    [SerializeField] bool doBoth;
 
     void Start() {
+        myPlayerController = GetComponent<PlayerController>(); ;
+        if (!isTesting) {
+            actTimer = Mathf.Abs(GlobalActionVariables.myActivationTime);
+        }
         timer = actTimer;
         width = Screen.width / 2f;
     }
@@ -32,6 +42,7 @@ public class OnActionPress : MonoBehaviour {
         }
         if (timerStarted) {
             timer -= Time.deltaTime;
+            timeHeld += Time.deltaTime;
         }
         if (timer <= 0f) {
             WhichSideTouch();
@@ -97,11 +108,16 @@ public class OnActionPress : MonoBehaviour {
                 }
             }
         }
+        if (rightPhase == TouchPhase.Stationary || rightPhase == TouchPhase.Moved) {
+            if (leftPhase == TouchPhase.Stationary || leftPhase == TouchPhase.Moved) {
+                doBoth = true;
+            }
+        }
     }
 
     void WhichSideTouch() {
         if (rightActive || leftActive) {
-            if (rightActive && leftActive) {
+            if (doBoth) {
                 if ((rightPhase == TouchPhase.Stationary || rightPhase == TouchPhase.Moved) &&
                     (leftPhase == TouchPhase.Stationary || leftPhase == TouchPhase.Moved)) {
                     if (!isHeld) {
@@ -160,11 +176,13 @@ public class OnActionPress : MonoBehaviour {
             //need:
             if (!isHeld) {
                 //Start call
+                myPlayerController.StartHeavyDefend();
                 Debug.Log("Start Right");
                 isHeld = true;
             }
             if (isHeld && end) {
                 //End call
+                myPlayerController.EndHeavyDefend();
                 Debug.Log("End Right");
                 ResetAction();
                 rightActive = false;
@@ -172,6 +190,7 @@ public class OnActionPress : MonoBehaviour {
         }
         else {
             //one time call
+            myPlayerController.LightDefend();
             Debug.Log("Light Right");
             ResetAction();
             rightActive = false;
@@ -183,11 +202,13 @@ public class OnActionPress : MonoBehaviour {
             //need:
             if (!isHeld) {
                 //Start call
+                myPlayerController.StartHeavyAttack();
                 Debug.Log("Start Left");
                 isHeld = true;
             }
             if (isHeld && end) {
                 //End call
+                myPlayerController.EndHeavyAttack();
                 Debug.Log("End Left");
                 ResetAction();
                 leftActive = false;
@@ -195,6 +216,7 @@ public class OnActionPress : MonoBehaviour {
         }
         else {
             //one time call
+            myPlayerController.LightAttack();
             Debug.Log("Light Left");
             ResetAction();
             leftActive = false;
@@ -206,11 +228,13 @@ public class OnActionPress : MonoBehaviour {
             //need:
             if (!isHeld) {
                 //Start call
+                myPlayerController.StartHeavySpecial();
                 Debug.Log("Start Both");
                 isHeld = true;
             }
             if (isHeld && end) {
                 //End call
+                myPlayerController.EndHeavySpecial();
                 Debug.Log("End Both");
                 rightActive = false;
                 leftActive = false;
@@ -219,6 +243,7 @@ public class OnActionPress : MonoBehaviour {
         }
         else {
             //one time call
+            myPlayerController.LightSpecial();
             Debug.Log("Light Both");
             rightActive = false;
             leftActive = false;
@@ -232,5 +257,7 @@ public class OnActionPress : MonoBehaviour {
         rightPhase = TouchPhase.Began;
         leftPhase = TouchPhase.Began;
         isHeld = false;
+        doBoth = false;
+        timeHeld = 0;
     }
 }
