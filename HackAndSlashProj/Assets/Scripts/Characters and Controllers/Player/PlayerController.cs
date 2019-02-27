@@ -5,6 +5,15 @@ using UnityEngine;
 //this class exists only to hold all player character controllers
 public class PlayerController : CreatureController
 {
+    private void Update() {
+        if (targetCS != null) {
+            if (myCS != null) {
+
+            }
+            else targetCS = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>();
+        }
+        else myCS = GetComponent<CharacterStats>();
+    }
     /*
     public override void LightAttack() {
 

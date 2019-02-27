@@ -1,57 +1,93 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[RequireComponent(typeof (CreatureController))]
-public class CharacterStats : MonoBehaviour
-{
-    public enum MyState { Norm, Vulnerable, LAttack, HAttack, LDefend, HDefend, LSpecial, HSpecial }
-    MyState myState = MyState.Norm;
+using static GAV.GlobalCharacterVariables;
+[RequireComponent(typeof(CreatureController))]
+public class CharacterStats : MonoBehaviour {
+    CharState myState = CharState.Normal;
 
-    int maxHealth;
-    int health;
-    int maxStamina;
-    int stamina;
+    protected int maxHealth;
+    protected int health;
+    protected int maxStamina;
+    protected int stamina;
 
     private void Start() {
         GetComponent<CharacterController>();
     }
 
-    public void ChangeState(MyState state) {
+    public void ChangeState(CharState state) {
         myState = state;
+        SettleStats();
     }
 
-    public void Damaged(int damage) {
+    public CharState GetState() {
+        return myState;
+    }
+
+    void SettleStats() {
+        if (maxHealth <= 0 || maxStamina <= 0) {
+            SetMaxHealth();
+            SetMaxStamina();
+            health = maxHealth;
+            stamina = maxStamina;
+        }
+    }
+
+    public int GetMaxHealth() {
+        return maxHealth;
+    }
+    public int GetMaxStamina() {
+        return maxStamina;
+    }
+    public int GetHealth() {
+        return health;
+    }
+    public int GetStamina() {
+        return stamina;
+    }
+
+    public virtual void SetMaxHealth() {
+        maxHealth = 1;
+    }
+    public virtual void SetMaxStamina() {
+        maxStamina = 1;
+    }
+    //protected virtual void SetHealth() { }
+    //protected virtual void SetStamina() { }
+
+    //myAttacker is for potential counter damage
+    public void Damaged(int damage, GameObject myAttacker) {
         switch (myState) {
-            case MyState.Norm:
+            case CharState.Normal:
                 health -= Mathf.Abs(damage);
                 break;
 
-            case MyState.Vulnerable:
-                health -= Mathf.Abs(damage * 2);
+            case CharState.Stunned:
+                health -= Mathf.Abs(damage * 3);
                 break;
 
-            case MyState.LAttack:
-                LAttackDamage(damage);
+            case CharState.LAttack:
+                LAttackDamage(damage, myAttacker);
                 break;
 
-            case MyState.HAttack:
-                HAttackDamage(damage);
+            case CharState.HAttack:
+                HAttackDamage(damage, myAttacker);
                 break;
 
-            case MyState.LDefend:
-                LDefendDamage(damage);
+            case CharState.LDefend:
+                LDefendDamage(damage, myAttacker);
                 break;
 
-            case MyState.HDefend:
-                HDefendDamage(damage);
+            case CharState.HDefend:
+                HDefendDamage(damage, myAttacker);
                 break;
 
-            case MyState.LSpecial:
-                LSpecialDamage(damage);
+            case CharState.LSpecial:
+                LSpecialDamage(damage, myAttacker);
                 break;
 
-            case MyState.HSpecial:
-                HSpecialDamage(damage);
+            case CharState.HSpecial:
+                HSpecialDamage(damage, myAttacker);
                 break;
 
             default:
@@ -60,10 +96,22 @@ public class CharacterStats : MonoBehaviour
         }
     }
 
-    protected virtual void LAttackDamage(int damage) { }
-    protected virtual void HAttackDamage(int damage) { }
-    protected virtual void LDefendDamage(int damage) { }
-    protected virtual void HDefendDamage(int damage) { }
-    protected virtual void LSpecialDamage(int damage) { }
-    protected virtual void HSpecialDamage(int damage) { }
+    protected virtual void LAttackDamage(int damage, GameObject myAttacker) {
+        health -= Mathf.Abs(damage);
+    }
+    protected virtual void HAttackDamage(int damage, GameObject myAttacker) {
+        health -= Mathf.Abs(damage);
+    }
+    protected virtual void LDefendDamage(int damage, GameObject myAttacker) {
+        health -= Mathf.Abs(damage);
+    }
+    protected virtual void HDefendDamage(int damage, GameObject myAttacker) {
+        health -= Mathf.Abs(damage);
+    }
+    protected virtual void LSpecialDamage(int damage, GameObject myAttacker) {
+        health -= Mathf.Abs(damage);
+    }
+    protected virtual void HSpecialDamage(int damage, GameObject myAttacker) {
+        health -= Mathf.Abs(damage);
+    }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using GAV;
+using static GAV.GlobalActionVariables;
 
 [RequireComponent(typeof(PlayerController))]
 public class OnActionPress : MonoBehaviour {
@@ -13,8 +13,7 @@ public class OnActionPress : MonoBehaviour {
     [SerializeField] float timer;
     [SerializeField] float timeHeld;
     float width;
-    [SerializeField] float actTimer = Mathf.Abs(GlobalActionVariables.myActivationTime);
-
+    [SerializeField] float actTimer = Mathf.Abs(myActivationTime);
     [SerializeField] bool timerStarted = false;
     [SerializeField] TouchPhase rightPhase;
     [SerializeField] TouchPhase leftPhase;
@@ -27,7 +26,7 @@ public class OnActionPress : MonoBehaviour {
     void Start() {
         myPlayerController = GetComponent<PlayerController>(); ;
         if (!isTesting) {
-            actTimer = Mathf.Abs(GlobalActionVariables.myActivationTime);
+            actTimer = Mathf.Abs(myActivationTime);
         }
         timer = actTimer;
         width = Screen.width / 2f;

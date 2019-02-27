@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using static GAV.GlobalCharacterVariables;
 public class CreatureController : MonoBehaviour
 {
+    protected CharacterStats myCS;
+    protected CharacterStats targetCS;
+
     public virtual void LightAttack() {
        
     }
