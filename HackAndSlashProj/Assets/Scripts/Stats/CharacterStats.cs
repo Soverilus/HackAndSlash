@@ -10,14 +10,15 @@ public class CharacterStats : MonoBehaviour {
     protected int health;
     protected int maxStamina;
     protected int stamina;
+    public int baseDamage;
 
     private void Start() {
         GetComponent<CharacterController>();
+        SettleStats();
     }
 
     public void ChangeState(CharState state) {
         myState = state;
-        SettleStats();
     }
 
     public CharState GetState() {
@@ -28,6 +29,7 @@ public class CharacterStats : MonoBehaviour {
         if (maxHealth <= 0 || maxStamina <= 0) {
             SetMaxHealth();
             SetMaxStamina();
+            SetBaseDamage();
             health = maxHealth;
             stamina = maxStamina;
         }
@@ -47,10 +49,13 @@ public class CharacterStats : MonoBehaviour {
     }
 
     public virtual void SetMaxHealth() {
-        maxHealth = 1;
+        maxHealth = 150;
     }
     public virtual void SetMaxStamina() {
-        maxStamina = 1;
+        maxStamina = 150;
+    }
+    public virtual void SetBaseDamage() {
+        baseDamage = 25;
     }
     //protected virtual void SetHealth() { }
     //protected virtual void SetStamina() { }

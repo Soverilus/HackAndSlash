@@ -4,8 +4,16 @@ using UnityEngine;
 using static GAV.GlobalCharacterVariables;
 public class CreatureController : MonoBehaviour
 {
+    protected Animator myAnim;
     protected CharacterStats myCS;
+    [SerializeField]
     protected CharacterStats targetCS;
+
+    protected void Start() {
+        myAnim = GetComponent<Animator>();
+        myCS = GetComponent<CharacterStats>();
+        targetCS = GameObject.FindGameObjectWithTag("Enemy").GetComponent<CharacterStats>();
+    }
 
     public virtual void LightAttack() {
        

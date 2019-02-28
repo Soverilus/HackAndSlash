@@ -5,25 +5,29 @@ using UnityEngine;
 public class VagabondStats : CharacterStats
 {
     public override void SetMaxHealth() {
-        maxHealth = 15;
+        maxHealth = 120;
     }
 
     public override void SetMaxStamina() {
-        maxStamina = 18;
-    }
-/*
-    protected override void HAttackDamage(int damage, GameObject myAttacker) {
-
+        maxStamina = 180;
     }
 
-    protected override void LAttackDamage(int damage, GameObject myAttacker) {
-
+    public override void SetBaseDamage() {
+        baseDamage = 25;
     }
+    /*
+        protected override void HAttackDamage(int damage, GameObject myAttacker) {
 
-    protected override void HDefendDamage(int damage, GameObject myAttacker) {
+        }
 
-    }
-    */
+        protected override void LAttackDamage(int damage, GameObject myAttacker) {
+
+        }
+
+        protected override void HDefendDamage(int damage, GameObject myAttacker) {
+
+        }
+        */
     protected override void LDefendDamage(int damage, GameObject myAttacker) {
         stamina = Mathf.RoundToInt(stamina -= damage / 2);
         myAttacker.GetComponent<CharacterStats>().Damaged(Mathf.RoundToInt(damage / 5), gameObject);
