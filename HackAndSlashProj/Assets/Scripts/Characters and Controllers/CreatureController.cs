@@ -4,15 +4,38 @@ using UnityEngine;
 using static GAV.GlobalCharacterVariables;
 public class CreatureController : MonoBehaviour
 {
+
     protected Animator myAnim;
     protected CharacterStats myCS;
     [SerializeField]
     protected CharacterStats targetCS;
 
-    protected void Start() {
+    protected virtual void Start() {
         myAnim = GetComponent<Animator>();
         myCS = GetComponent<CharacterStats>();
         targetCS = GameObject.FindGameObjectWithTag("Enemy").GetComponent<CharacterStats>();
+    }
+
+    protected int chargeLv = 1;
+    protected int maxChargeLv = 5;
+
+    public virtual void HeavyChargeInc() {
+        Mathf.Clamp(chargeLv += 1, 1, maxChargeLv);
+        if (chargeLv >= maxChargeLv) {
+            myAnim.SetBool("HAttack", false);
+        }
+    }
+
+    public virtual void DamageTarget(int zeroForLight) {
+        if (zeroForLight != 0) {
+            targetCS.Damaged(myCS.baseDamage + chargeLv * 10, gameObject);
+            EndHeavyAttack();
+        }
+        else {
+            targetCS.Damaged(myCS.baseDamage, gameObject);
+        }
+        chargeLv = 1;
+        myCS.ChangeState(CharState.Normal);
     }
 
     public virtual void LightAttack() {

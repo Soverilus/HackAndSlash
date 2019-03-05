@@ -5,26 +5,24 @@ using static GAV.GlobalCharacterVariables;
 [RequireComponent(typeof(CharacterStats), typeof(Animator))]
 public class VagabondController : PlayerController {
 
-    int slashChargeLv = 1;
-
-    public void HeavyChargeInc() {
-        Mathf.Clamp(slashChargeLv += 1, 1, 5);
-        if (slashChargeLv >= 5) {
+    /*public override void HeavyChargeInc() {
+        Mathf.Clamp(chargeLv += 1, 1, 5);
+        if (chargeLv >= 5) {
             myAnim.SetBool("HAttack", false);
         }
     }
 
-    public void DamageTarget(int zeroForLight) {
+    public override void DamageTarget(int zeroForLight) {
         if (zeroForLight != 0) {
-            targetCS.Damaged(myCS.baseDamage + slashChargeLv * 10, gameObject);
+            targetCS.Damaged(myCS.baseDamage + chargeLv * 10, gameObject);
             EndHeavyAttack();
         }
         else {
             targetCS.Damaged(myCS.baseDamage, gameObject);
         }
-        slashChargeLv = 1;
+        chargeLv = 1;
         myCS.ChangeState(CharState.Normal);
-    }
+    }*/
 
     public override void LightAttack() {
         Debug.Log(gameObject.name + " Performed LightAttack");
@@ -95,6 +93,7 @@ public class VagabondController : PlayerController {
     public override void Stagger() {
         Debug.Log(gameObject.name + " Performed Stagger");
         myCS.ChangeState(CharState.Stunned);
+        myAnim.SetTrigger("Stun");
         //start animation
     }
 }
