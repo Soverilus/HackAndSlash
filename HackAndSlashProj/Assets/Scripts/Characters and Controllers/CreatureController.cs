@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using static GAV.GlobalCharacterVariables;
+//this class holds all of the basic globally necessary creature behaviours - Players and Enemies alike
 public class CreatureController : MonoBehaviour
 {
-
     protected Animator myAnim;
     protected CharacterStats myCS;
     [SerializeField]

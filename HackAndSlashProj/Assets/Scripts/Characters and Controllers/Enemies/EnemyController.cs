@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using static GAV.GlobalCharacterVariables;
-//this class exists only to hold all enemy character controllers AS WELL AS creating the basic AI structure for said enemy character controllers.
+//this class exists only to hold all enemy character controllers AS WELL AS creating the basic AI structure for said enemy character controllers to override if needed.
 public class EnemyController : CreatureController {
     protected enum Actions {
         Nothing, LAttack, HAttack, LDefend, HDefend, LSpecial, HSpecial,
@@ -11,7 +11,6 @@ public class EnemyController : CreatureController {
     protected int[] myActions;
     protected float myTimer;
     protected float actionDC;
-    public bool canDoAction = true;
 
     protected virtual void SetactionDC() {
         actionDC = 6f;
@@ -41,7 +40,7 @@ public class EnemyController : CreatureController {
     }
 
     protected virtual void ActionAIModule() {
-        if (canDoAction) {
+        if (myCS.GetState() == CharState.Normal) {
             CharState targetState = targetCS.GetState();
             ActionAIModuleCalc(targetState);
         }

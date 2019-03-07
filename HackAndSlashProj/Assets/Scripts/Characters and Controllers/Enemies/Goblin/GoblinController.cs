@@ -131,6 +131,7 @@ public class GoblinController : EnemyController {
 
     public override void LightAttack() {
         Debug.Log(gameObject.name + " Performed LightAttack");
+        myCS.ChangeState(CharState.LAttack);
         myAnim.SetTrigger("LAttack");
     }
 
@@ -144,6 +145,7 @@ public class GoblinController : EnemyController {
 
     public override void LightDefend() {
         Debug.Log(gameObject.name + " Performed LightDefend");
+        myCS.ChangeState(CharState.LDefend);
         myAnim.SetTrigger("LDefend");
     }
 
@@ -157,6 +159,7 @@ public class GoblinController : EnemyController {
 
     public override void LightSpecial() {
         Debug.Log(gameObject.name + " Performed LightSpecial");
+        myCS.ChangeState(CharState.LSpecial);
         myAnim.SetTrigger("LSpecial");
         //three animations, at the end of each, deal stamina damage on block, and double damage on stunned (stacks with stunned damage)
         //start animation
@@ -172,6 +175,7 @@ public class GoblinController : EnemyController {
 
     public override void Stagger() {
         Debug.Log(gameObject.name + " Performed Stagger");
+        myCS.ChangeState(CharState.Stunned);
         myAnim.SetTrigger("Stun");
         //start animation
     }
