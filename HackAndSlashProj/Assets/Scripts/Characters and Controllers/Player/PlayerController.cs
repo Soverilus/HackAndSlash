@@ -4,6 +4,10 @@ using UnityEngine;
 
 //this class exists only to hold all player character controllers
 public class PlayerController : CreatureController {
+    protected override void Start() {
+        base.Start();
+        targetCS = GameObject.FindGameObjectWithTag("Enemy").GetComponent<CharacterStats>();
+    }
     /*
     public override void LightAttack() {
 

@@ -7,9 +7,13 @@ public class CharacterStats : MonoBehaviour {
     CharState myState = CharState.Normal;
 
     protected int maxHealth;
+    [SerializeField]
     protected int health;
     protected int maxStamina;
+    [SerializeField]
     protected int stamina;
+    protected float staminaRegTimer = 3f;
+    float timer;
     public int baseDamage;
 
     private void Start() {
@@ -20,12 +24,23 @@ public class CharacterStats : MonoBehaviour {
     public void ChangeState(CharState state) {
         myState = state;
     }
-
+    protected virtual void Update() {
+        if (stamina < maxStamina) {
+            timer += Time.deltaTime;
+            if (timer >= staminaRegTimer) {
+                stamina += 1;
+            }
+        }
+    }
     public CharState GetState() {
         return myState;
     }
 
     void SettleStats() {
+        if (health <= 0 || stamina <= 0) {
+            health = maxHealth;
+            stamina = maxStamina;
+        }
         if (maxHealth <= 0 || maxStamina <= 0) {
             SetMaxHealth();
             SetMaxStamina();
@@ -61,6 +76,9 @@ public class CharacterStats : MonoBehaviour {
     //protected virtual void SetStamina() { }
 
     //myAttacker is for potential counter damage
+    public void DamageStamina(int cost) {
+        stamina -= cost;
+    }
     public void Damaged(int damage, GameObject myAttacker) {
         switch (myState) {
             case CharState.Normal:

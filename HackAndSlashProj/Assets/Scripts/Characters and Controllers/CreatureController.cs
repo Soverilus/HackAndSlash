@@ -13,9 +13,16 @@ public class CreatureController : MonoBehaviour
     protected virtual void Start() {
         myAnim = GetComponent<Animator>();
         myCS = GetComponent<CharacterStats>();
-        targetCS = GameObject.FindGameObjectWithTag("Enemy").GetComponent<CharacterStats>();
+        
     }
-
+    protected virtual void Staggerable(bool isBool) {
+        if (isBool) {
+            myAnim.SetBool("Staggerable", true);
+        }
+        else {
+            myAnim.SetBool("Staggerable", false);
+        }
+    }
     protected int chargeLv = 1;
     protected int maxChargeLv = 5;
 
@@ -26,6 +33,12 @@ public class CreatureController : MonoBehaviour
         }
     }
 
+    //USE THIS IN ANIMATOR FRAMES AS A FUNCTION TO DETERMINE ABILITY STAMINA COST
+    public virtual void StaminaCost(int staminaAmount) {
+        myCS.DamageStamina(staminaAmount);
+    }
+
+    //USE THIS TO DETERMINE DAMAGE DEALT BY AN ABILITY ON ANIMATION FRAME
     public virtual void DamageTarget(int zeroForLight) {
         if (zeroForLight != 0) {
             targetCS.Damaged(myCS.baseDamage + chargeLv * 10, gameObject);

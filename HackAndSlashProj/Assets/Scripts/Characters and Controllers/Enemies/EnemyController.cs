@@ -11,32 +11,40 @@ public class EnemyController : CreatureController {
     protected int[] myActions;
     protected float myTimer;
     protected float actionDC;
+    bool AIEnabled = false;
 
     protected virtual void SetactionDC() {
+        //Time before the AI attempts another action
+        //override this to increase enemy AI attack speed
         actionDC = 6f;
     }
-    private void Update() {
+    void Update() {
         CoreAIModule();
     }
 
     void CoreAIModule() {
         if (myCS != null) {
-            if (targetCS != null) {
+            if (targetCS != null && myCS.GetHealth() > 0) {
                 int myStamina = myCS.GetStamina();
                 int maxStamina = myCS.GetMaxStamina();
                 if (myStamina == maxStamina) {
-                    myTimer += Time.deltaTime * 6f;
+                    myTimer += Time.deltaTime * actionDC;
                 }
                 if (myStamina < maxStamina && myStamina > 0f) {
                     myTimer += Time.deltaTime;
                 }
-                if (myTimer + Random.Range(0.01f, 5f) >= actionDC) {
+                if (myTimer + Random.Range(0.01f, 5f) >= actionDC && AIEnabled) {
                     ActionAIModule();
+                    myTimer = 0f;
                 }
             }
             else targetCS = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>();
         }
         else myCS = GetComponent<CharacterStats>();
+    }
+
+    public void EnableAI() {
+        AIEnabled = true;
     }
 
     protected virtual void ActionAIModule() {

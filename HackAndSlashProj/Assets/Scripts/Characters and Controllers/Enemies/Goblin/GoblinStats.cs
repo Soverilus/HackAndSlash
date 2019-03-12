@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class GoblinStats : CharacterStats {
     public override void SetMaxHealth() {
-        maxHealth = 6;
+        maxHealth = 60;
     }
 
     public override void SetMaxStamina() {
-        maxStamina = 6;
+        maxStamina = 60;
     }
 
     //protected override void HAttackDamage(int damage, GameObject myAttacker) { }
