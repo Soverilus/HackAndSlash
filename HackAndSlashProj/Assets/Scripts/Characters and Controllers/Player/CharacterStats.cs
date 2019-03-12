@@ -12,23 +12,42 @@ public class CharacterStats : MonoBehaviour {
     protected int maxStamina;
     [SerializeField]
     protected int stamina;
+    public float staminaRegMult = 10f;
+    protected float equivStamina;
     protected float staminaRegTimer = 3f;
     float timer;
     public int baseDamage;
+    protected CreatureController myCC;
 
     private void Start() {
-        GetComponent<CharacterController>();
+        myCC = GetComponent<CreatureController>();
         SettleStats();
     }
 
+    public void EnumFromString(string myString) {
+        CharState newState = (CharState)System.Enum.Parse(typeof(CharState), myString);
+        myState = newState;
+    }
+    public void ResetState() {
+        myState = CharState.Normal;
+    }
     public void ChangeState(CharState state) {
         myState = state;
     }
     protected virtual void Update() {
+        if (health > maxHealth) {
+            health = maxHealth;
+        }
+        if (equivStamina > maxStamina) {
+            equivStamina = maxStamina;
+        }
+        stamina = Mathf.FloorToInt(equivStamina);
         if (stamina < maxStamina) {
-            timer += Time.deltaTime;
+            if (timer < staminaRegTimer) {
+                timer += Time.deltaTime;
+            }
             if (timer >= staminaRegTimer) {
-                stamina += 1;
+                equivStamina += staminaRegMult * Time.deltaTime;
             }
         }
     }
@@ -40,6 +59,7 @@ public class CharacterStats : MonoBehaviour {
         if (health <= 0 || stamina <= 0) {
             health = maxHealth;
             stamina = maxStamina;
+            equivStamina = maxStamina;
         }
         if (maxHealth <= 0 || maxStamina <= 0) {
             SetMaxHealth();
@@ -47,6 +67,7 @@ public class CharacterStats : MonoBehaviour {
             SetBaseDamage();
             health = maxHealth;
             stamina = maxStamina;
+            equivStamina = maxStamina;
         }
     }
 
@@ -72,12 +93,21 @@ public class CharacterStats : MonoBehaviour {
     public virtual void SetBaseDamage() {
         baseDamage = 25;
     }
-    //protected virtual void SetHealth() { }
-    //protected virtual void SetStamina() { }
-
+    public void HealStam(int stamAmount) {
+        equivStamina += Mathf.Abs(stamAmount);
+    }
+    public void Heal(int HPamount) {
+        health += Mathf.Abs(HPamount);
+    }
     //myAttacker is for potential counter damage
     public void DamageStamina(int cost) {
         stamina -= cost;
+        equivStamina -= cost;
+        if (equivStamina < 0) {
+            equivStamina = 0;
+            myCC.Stagger();
+        }
+        timer = 0;
     }
     public void Damaged(int damage, GameObject myAttacker) {
         switch (myState) {
@@ -116,6 +146,9 @@ public class CharacterStats : MonoBehaviour {
             default:
                 health -= Mathf.Abs(damage);
                 break;
+        }
+        if (health <= 0) {
+            myCC.myAnim.SetTrigger("Death");
         }
     }
 

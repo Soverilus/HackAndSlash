@@ -2,18 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VagabondStats : CharacterStats
-{
+public class VagabondStats : CharacterStats {
     public override void SetMaxHealth() {
-        maxHealth = 120;
+        maxHealth = 160;
     }
 
     public override void SetMaxStamina() {
-        maxStamina = 180;
+        maxStamina = 220;
     }
 
     public override void SetBaseDamage() {
-        baseDamage = 25;
+        baseDamage = 20;
     }
     /*
         protected override void HAttackDamage(int damage, GameObject myAttacker) {
@@ -23,14 +22,13 @@ public class VagabondStats : CharacterStats
         protected override void LAttackDamage(int damage, GameObject myAttacker) {
 
         }
-
-        protected override void HDefendDamage(int damage, GameObject myAttacker) {
-
-        }
         */
     protected override void LDefendDamage(int damage, GameObject myAttacker) {
-        stamina = Mathf.RoundToInt(stamina -= damage / 2);
-        myAttacker.GetComponent<CharacterStats>().Damaged(Mathf.RoundToInt(damage / 5), gameObject);
+        myAttacker.GetComponent<CharacterStats>().DamageStamina(damage * 5);
+    }
+
+    protected override void HDefendDamage(int damage, GameObject myAttacker) {
+        equivStamina -= damage;
     }
 
     protected override void HSpecialDamage(int damage, GameObject myAttacker) {

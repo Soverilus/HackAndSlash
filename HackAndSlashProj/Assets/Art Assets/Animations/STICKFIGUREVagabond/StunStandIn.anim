@@ -110,4 +110,20 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0
+    functionName: EnumFromString
+    data: Stunned
+    objectReferenceParameter: {fileID: 11500000, guid: 037306cb06fde5845b27f6d5a9275b35,
+      type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 4.3333335
+    functionName: EnumFromString
+    data: Normal
+    objectReferenceParameter: {fileID: 11500000, guid: 037306cb06fde5845b27f6d5a9275b35,
+      type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

@@ -22,6 +22,8 @@ public class OnActionPress : MonoBehaviour {
     [SerializeField] bool rightActive;
     [SerializeField] bool leftActive;
     [SerializeField] bool doBoth;
+    [SerializeField] bool startBoth = false;
+    [SerializeField] bool isActing = false;
 
     void Start() {
         myPlayerController = GetComponent<PlayerController>(); ;
@@ -107,10 +109,11 @@ public class OnActionPress : MonoBehaviour {
                 }
             }
         }
-        if (rightPhase == TouchPhase.Stationary || rightPhase == TouchPhase.Moved) {
-            if (leftPhase == TouchPhase.Stationary || leftPhase == TouchPhase.Moved) {
-                doBoth = true;
-            }
+        if ((rightPhase == TouchPhase.Stationary || rightPhase == TouchPhase.Moved) && (leftPhase == TouchPhase.Stationary || leftPhase == TouchPhase.Moved)&&!isActing) {
+            doBoth = true;
+        }
+        else if (rightPhase != TouchPhase.Stationary && rightPhase != TouchPhase.Moved && leftPhase != TouchPhase.Stationary && leftPhase != TouchPhase.Moved) {
+            //doBoth = false;
         }
     }
 
@@ -173,7 +176,8 @@ public class OnActionPress : MonoBehaviour {
         if (held) {
             //what info do I need for a heavy attack charge?
             //need:
-            if (!isHeld) {
+            if (!isHeld && !isActing) {
+                isActing = true;
                 //Start call
                 myPlayerController.StartHeavyDefend();
                 Debug.Log("Start Right");
@@ -189,18 +193,22 @@ public class OnActionPress : MonoBehaviour {
         }
         else {
             //one time call
-            myPlayerController.LightDefend();
-            Debug.Log("Light Right");
-            ResetAction();
-            rightActive = false;
+            if (!isActing) {
+                isActing = true;
+                myPlayerController.LightDefend();
+                Debug.Log("Light Right");
+                ResetAction();
+                rightActive = false;
+            }
         }
     }
     void LeftSideTouched(bool held, bool end) {
         if (held) {
             //what info do I need for a heavy defend charge?
             //need:
-            if (!isHeld) {
+            if (!isHeld && !isActing) {
                 //Start call
+                isActing = true;
                 myPlayerController.StartHeavyAttack();
                 Debug.Log("Start Left");
                 isHeld = true;
@@ -215,23 +223,28 @@ public class OnActionPress : MonoBehaviour {
         }
         else {
             //one time call
-            myPlayerController.LightAttack();
-            Debug.Log("Light Left");
-            ResetAction();
-            leftActive = false;
+            if (!isActing) {
+                isActing = true;
+                myPlayerController.LightAttack();
+                Debug.Log("Light Left");
+                ResetAction();
+                leftActive = false;
+            }
         }
     }
     void BothSidesTouched(bool held, bool end) {
         if (held) {
             //what info do I need for a heavy special charge?
             //need:
-            if (!isHeld) {
+            if (!isHeld && !isActing && !startBoth) {
                 //Start call
+                isActing = true;
+                startBoth = true;
                 myPlayerController.StartHeavySpecial();
                 Debug.Log("Start Both");
                 isHeld = true;
             }
-            if (isHeld && end) {
+            if (isHeld && end && startBoth) {
                 //End call
                 myPlayerController.EndHeavySpecial();
                 Debug.Log("End Both");
@@ -242,11 +255,14 @@ public class OnActionPress : MonoBehaviour {
         }
         else {
             //one time call
-            myPlayerController.LightSpecial();
-            Debug.Log("Light Both");
-            rightActive = false;
-            leftActive = false;
-            ResetAction();
+            if (!isActing) {
+                isActing = true;
+                myPlayerController.LightSpecial();
+                Debug.Log("Light Both");
+                rightActive = false;
+                leftActive = false;
+                ResetAction();
+            }
         }
     }
 
@@ -255,8 +271,12 @@ public class OnActionPress : MonoBehaviour {
         timer = actTimer;
         rightPhase = TouchPhase.Began;
         leftPhase = TouchPhase.Began;
+        leftActive = false;
+        rightActive = false;
         isHeld = false;
         doBoth = false;
         timeHeld = 0;
+        isActing = false;
+        startBoth = false;
     }
 }

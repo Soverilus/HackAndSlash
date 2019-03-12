@@ -129,24 +129,12 @@ public class GoblinController : EnemyController {
         }
     }
 
-    public override void LightAttack() {
-        Debug.Log(gameObject.name + " Performed LightAttack");
-        myCS.ChangeState(CharState.LAttack);
-        myAnim.SetTrigger("LAttack");
-    }
-
     public override void StartHeavyAttack() {
         //null
     }
 
     public override void EndHeavyAttack() {
         //null
-    }
-
-    public override void LightDefend() {
-        Debug.Log(gameObject.name + " Performed LightDefend");
-        myCS.ChangeState(CharState.LDefend);
-        myAnim.SetTrigger("LDefend");
     }
 
     public override void StartHeavyDefend() {
@@ -157,26 +145,11 @@ public class GoblinController : EnemyController {
         //null
     }
 
-    public override void LightSpecial() {
-        Debug.Log(gameObject.name + " Performed LightSpecial");
-        myCS.ChangeState(CharState.LSpecial);
-        myAnim.SetTrigger("LSpecial");
-        //three animations, at the end of each, deal stamina damage on block, and double damage on stunned (stacks with stunned damage)
-        //start animation
-    }
-
     public override void StartHeavySpecial() {
         //null
     }
 
     public override void EndHeavySpecial() {
         //null
-    }
-
-    public override void Stagger() {
-        Debug.Log(gameObject.name + " Performed Stagger");
-        myCS.ChangeState(CharState.Stunned);
-        myAnim.SetTrigger("Stun");
-        //start animation
     }
 }
