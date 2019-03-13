@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static GAV.GlobalCharacterVariables;
 //this class holds all of the basic globally necessary creature behaviours - Players and Enemies alike
-public class CreatureController : MonoBehaviour
-{
+public class CreatureController : MonoBehaviour {
     public Animator myAnim;
     protected CharacterStats myCS;
     [SerializeField]
@@ -13,7 +12,7 @@ public class CreatureController : MonoBehaviour
     protected virtual void Start() {
         myAnim = GetComponent<Animator>();
         myCS = GetComponent<CharacterStats>();
-        
+
     }
     protected virtual void Staggerable(bool isBool) {
         if (isBool) {
@@ -39,7 +38,8 @@ public class CreatureController : MonoBehaviour
     }
 
     //USE THIS IN ANIMATOR FRAMES AS A FUNCTION TO DETERMINE STAMINA DAMAGE
-    public virtual void DamageTargetStamina(int Stamina) {
+    public virtual void DamageTargetStamina(int stamina) {
+        int stamDamage = stamina;
         switch (targetCS.GetState()) {
             case CharState.HAttack:
 
@@ -77,19 +77,14 @@ public class CreatureController : MonoBehaviour
                 Debug.LogError("targetState is out of bounds!");
                 break;
         }
+        targetCS.DamageStamina(stamDamage);
     }
 
     //USE THIS TO DETERMINE DAMAGE DEALT BY AN ABILITY ON ANIMATION FRAME
-    public virtual void DamageTarget(int zeroForLight) {
-        if (zeroForLight != 0) {
-            targetCS.Damaged(myCS.baseDamage + chargeLv * 10, gameObject);
-            EndHeavyAttack();
-        }
-        else {
-            targetCS.Damaged(myCS.baseDamage, gameObject);
-        }
+    public virtual void DamageTarget(float percentageDamage) {
+        targetCS.Damaged(Mathf.RoundToInt(myCS.baseDamage * chargeLv * percentageDamage), gameObject);
+        EndHeavyAttack();
         chargeLv = 1;
-        myCS.ChangeState(CharState.Normal);
     }
 
     public virtual void LightAttack() {

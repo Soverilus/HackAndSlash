@@ -16,8 +16,14 @@ public class EnemyController : CreatureController {
     protected virtual void SetactionDC() {
         //Time before the AI attempts another action
         //override this to increase enemy AI attack speed
-        actionDC = 6f;
+        actionDC = 10f;
     }
+
+    protected override void Start() {
+        base.Start();
+        SetactionDC();
+    }
+
     void Update() {
         CoreAIModule();
     }
@@ -31,10 +37,16 @@ public class EnemyController : CreatureController {
                     myTimer += Time.deltaTime * actionDC;
                 }
                 if (myStamina < maxStamina && myStamina > 0f) {
-                    myTimer += Time.deltaTime;
+                    if (myStamina > 0.5 * maxStamina) {
+                        myTimer += Time.deltaTime;
+                    }
+                    if (myStamina <= 0.5 * maxStamina) {
+                        myTimer += 0.1f * Time.deltaTime;
+                    }
                 }
-                if (myTimer + Random.Range(0.01f, 5f) >= actionDC && AIEnabled) {
+                if (myTimer + Random.Range(0.01f, 0.5f * actionDC) >= actionDC && AIEnabled) {
                     ActionAIModule();
+                    Debug.Log(myTimer);
                     myTimer = 0f;
                 }
             }
@@ -142,12 +154,14 @@ public class EnemyController : CreatureController {
                 Debug.LogError("targetState is out of bounds!");
                 break;
         }
+
         for (int i = 0; i < (int)Actions.numEntries; i++) {
             if (myActions[i] > maxValue) {
                 maxValue = myActions[i];
                 myIndex = i;
             }
         }
+
         // output result
         if (myIndex >= 0) {
             switch (myIndex) {

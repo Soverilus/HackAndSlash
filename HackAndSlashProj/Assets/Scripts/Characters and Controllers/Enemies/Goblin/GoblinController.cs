@@ -4,6 +4,10 @@ using UnityEngine;
 using static GAV.GlobalCharacterVariables;
 public class GoblinController : EnemyController {
 
+
+    protected override void SetactionDC() {
+        actionDC = 3f;
+    }
     protected override void ActionAIModuleCalc(CharState targetState) {
         myActions = ReturnActionArray();
         int myIndex = -101;
@@ -14,9 +18,9 @@ public class GoblinController : EnemyController {
                 myActions[(int)Actions.HDefend] += 0;
                 myActions[(int)Actions.HSpecial] += 0;
                 myActions[(int)Actions.LAttack] += 25;
-                myActions[(int)Actions.LDefend] += 50;
+                myActions[(int)Actions.LDefend] += 75;
                 myActions[(int)Actions.LSpecial] += 5;
-                myActions[(int)Actions.Nothing] += 15;
+                myActions[(int)Actions.Nothing] += 5;
                 break;
 
             case CharState.HDefend:
@@ -44,7 +48,7 @@ public class GoblinController : EnemyController {
                 myActions[(int)Actions.HDefend] += 0;
                 myActions[(int)Actions.HSpecial] += 0;
                 myActions[(int)Actions.LAttack] += 5;
-                myActions[(int)Actions.LDefend] += 25;
+                myActions[(int)Actions.LDefend] += 50;
                 myActions[(int)Actions.LSpecial] += 5;
                 myActions[(int)Actions.Nothing] += 5;
                 break;
@@ -127,6 +131,50 @@ public class GoblinController : EnemyController {
                     break;
             }
         }
+    }
+
+    public override void DamageTargetStamina(int stamina) {
+        int stamDamage = stamina;
+        if (myCS.GetState() == CharState.LSpecial) {
+            switch (targetCS.GetState()) {
+                case CharState.HAttack:
+
+                    break;
+
+                case CharState.HDefend:
+                    stamDamage *= 50;
+                    break;
+
+                case CharState.HSpecial:
+                    stamDamage *= 50;
+                    break;
+
+                case CharState.LAttack:
+
+                    break;
+
+                case CharState.LDefend:
+
+                    break;
+
+                case CharState.LSpecial:
+
+                    break;
+
+                case CharState.Normal:
+
+                    break;
+
+                case CharState.Stunned:
+
+                    break;
+
+                default:
+                    Debug.LogError("targetState is out of bounds!");
+                    break;
+            }
+        }
+        targetCS.DamageStamina(stamDamage);
     }
 
     public override void StartHeavyAttack() {
