@@ -50,6 +50,7 @@ public class CharacterStats : MonoBehaviour {
                 timer += Time.deltaTime;
             }
             if (timer >= staminaRegTimer) {
+                myCC.myAnim.ResetTrigger("Stunned");
                 equivStamina += staminaRegMult * Time.deltaTime;
             }
         }

@@ -116,4 +116,8 @@ public class MenuController : MonoBehaviour {
     public void LoadScene(string myScene) {
         SceneManager.LoadScene(myScene);
     }
+
+    public void QuitApp() {
+        Application.Quit();
+    }
 }
