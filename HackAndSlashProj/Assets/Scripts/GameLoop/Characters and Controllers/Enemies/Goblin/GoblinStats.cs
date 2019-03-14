@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoblinStats : CharacterStats {
+public class GoblinStats : EnemyStats {
     public override void SetMaxHealth() {
         maxHealth = 60;
     }

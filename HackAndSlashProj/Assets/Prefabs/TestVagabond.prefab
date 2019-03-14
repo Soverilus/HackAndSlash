@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6521185860857102640}
+  - component: {fileID: 8130584822954729741}
   - component: {fileID: 4565640781469547285}
   - component: {fileID: 8242200947246569706}
-  - component: {fileID: 8130584822954729741}
   - component: {fileID: 9157988480466363200}
   - component: {fileID: 2758398490706247516}
   m_Layer: 0
@@ -35,6 +35,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8130584822954729741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5360828447744406978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bfbfed97d4d91d4a869460023da57e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  stamina: 0
+  staminaRegMult: 30
+  baseDamage: 0
+  isDead: 0
+  myGLC: {fileID: 0}
 --- !u!114 &4565640781469547285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,22 +94,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myAnim: {fileID: 0}
   targetCS: {fileID: 0}
---- !u!114 &8130584822954729741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5360828447744406978}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bfbfed97d4d91d4a869460023da57e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 0
-  stamina: 0
-  staminaRegMult: 30
-  baseDamage: 0
 --- !u!212 &9157988480466363200
 SpriteRenderer:
   m_ObjectHideFlags: 0

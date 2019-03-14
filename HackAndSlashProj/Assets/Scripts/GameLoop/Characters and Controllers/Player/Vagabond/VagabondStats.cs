@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VagabondStats : CharacterStats {
+public class VagabondStats : PlayerStats {
     public override void SetMaxHealth() {
         maxHealth = 160;
     }

@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 7212f44dbfce97144a3c497a4e4547c2
+  - enabled: 1
+    path: Assets/Scenes/GoblinFight.unity
+    guid: 7d135421e9b57084cb1fea687621c279
   m_configObjects: {}

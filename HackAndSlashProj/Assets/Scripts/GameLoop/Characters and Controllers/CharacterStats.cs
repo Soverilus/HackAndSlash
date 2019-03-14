@@ -5,7 +5,6 @@ using static GAV.GlobalCharacterVariables;
 [RequireComponent(typeof(CreatureController))]
 public class CharacterStats : MonoBehaviour {
     CharState myState = CharState.Normal;
-
     protected int maxHealth;
     [SerializeField]
     protected int health;
@@ -18,12 +17,16 @@ public class CharacterStats : MonoBehaviour {
     float timer;
     public int baseDamage;
     protected CreatureController myCC;
+    public bool isDead = false;
 
     private void Start() {
         myCC = GetComponent<CreatureController>();
         SettleStats();
     }
 
+    public void SetHealth(int myHealth) {
+        health = myHealth;
+    }
     public void EnumFromString(string myString) {
         CharState newState = (CharState)System.Enum.Parse(typeof(CharState), myString);
         myState = newState;
@@ -147,6 +150,10 @@ public class CharacterStats : MonoBehaviour {
                 health -= Mathf.Abs(damage);
                 break;
         }
+        CheckHealth();
+    }
+
+    protected virtual void CheckHealth() {
         if (health <= 0) {
             myCC.myAnim.SetTrigger("Death");
         }

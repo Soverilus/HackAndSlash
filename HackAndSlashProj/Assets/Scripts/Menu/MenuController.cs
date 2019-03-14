@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class MenuController : MonoBehaviour {
     public SpriteRenderer shopMenuArt;
     bool fadeToShop = false;
@@ -110,5 +111,9 @@ public class MenuController : MonoBehaviour {
         for (int i = 0; i < mainMenuButtonImages.Length; i++) {
             mainMenuButtonImages[i].color = new Color(mainMenuButtonImages[i].color.r, mainMenuButtonImages[i].color.g, mainMenuButtonImages[i].color.b, mainMenuButtonImages[i].color.a + positive * Time.deltaTime);
         }
+    }
+
+    public void LoadScene(string myScene) {
+        SceneManager.LoadScene(myScene);
     }
 }
