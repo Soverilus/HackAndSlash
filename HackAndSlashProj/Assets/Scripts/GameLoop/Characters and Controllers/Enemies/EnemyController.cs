@@ -11,7 +11,7 @@ public class EnemyController : CreatureController {
     protected int[] myActions;
     protected float myTimer;
     protected float actionDC;
-    bool AIEnabled = false;
+    bool AIEnabled = true;
 
     protected virtual void SetactionDC() {
         //Time before the AI attempts another action
@@ -55,8 +55,8 @@ public class EnemyController : CreatureController {
         else myCS = GetComponent<CharacterStats>();
     }
 
-    public void EnableAI() {
-        AIEnabled = true;
+    public void EnableAI(bool isTrue) {
+        AIEnabled = isTrue;
     }
 
     protected virtual void ActionAIModule() {
