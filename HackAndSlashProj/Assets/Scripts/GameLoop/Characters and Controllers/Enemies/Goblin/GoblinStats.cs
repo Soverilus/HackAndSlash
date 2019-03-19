@@ -11,6 +11,10 @@ public class GoblinStats : EnemyStats {
         maxStamina = 60;
     }
 
+    protected override void SetRewardTier() {
+        myGLC.rewardTier += 1;
+    }
+
     //protected override void HAttackDamage(int damage, GameObject myAttacker) { }
 
     //protected override void LAttackDamage(int damage, GameObject myAttacker) { }

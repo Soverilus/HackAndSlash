@@ -266,7 +266,7 @@ public class OnActionPress : MonoBehaviour {
         }
     }
 
-    void ResetAction() {
+    public void ResetAction() {
         timerStarted = false;
         timer = actTimer;
         rightPhase = TouchPhase.Began;

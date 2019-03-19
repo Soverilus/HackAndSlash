@@ -8,8 +8,16 @@ public class EnemyStats : CharacterStats
     protected override void CheckHealth() {
         if (health <= 0) {
             health = 0;
+            SetRewardTier();
+            MiscOnDeath();
             myCC.myAnim.SetTrigger("Death");
             myGLC.OnVictory();
         }
+    }
+    protected virtual void SetRewardTier() {
+        myGLC.rewardTier += 0;
+    }
+    protected virtual void MiscOnDeath() {
+        //This has been left empty on purpose
     }
 }

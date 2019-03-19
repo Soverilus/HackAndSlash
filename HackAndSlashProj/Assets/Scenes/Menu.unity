@@ -112,6 +112,81 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &44199148
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 44199149}
+  - component: {fileID: 44199150}
+  - component: {fileID: 44199151}
+  m_Layer: 5
+  m_Name: Gold
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &44199149
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 44199148}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1660634826}
+  m_Father: {fileID: 1920017188}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -290.5, y: 215.8}
+  m_SizeDelta: {x: 50, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &44199150
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 44199148}
+  m_CullTransparentMesh: 0
+--- !u!114 &44199151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 44199148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: fc401bb08cf6cc54f87db8ad1f16d98d, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
 --- !u!1 &60132320
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,6 +199,7 @@ GameObject:
   - component: {fileID: 60132324}
   - component: {fileID: 60132323}
   - component: {fileID: 60132322}
+  - component: {fileID: 60132325}
   m_Layer: 5
   m_Name: Revive Potion
   m_TagString: Untagged
@@ -230,6 +306,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 60132320}
   m_CullTransparentMesh: 0
+--- !u!114 &60132325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60132320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1819ae991829244459a0ef02d537fc00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DELETEITEM: 0
+  itemName: RevivePotion
+  buyWithGold: 1
+  maxItem: 2
+  cost: 1000
+  realCost: 0
+  costMultiplier: 2
+  costMultAt: 1
 --- !u!1 &104732967
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,6 +338,7 @@ GameObject:
   - component: {fileID: 104732971}
   - component: {fileID: 104732970}
   - component: {fileID: 104732969}
+  - component: {fileID: 104732972}
   m_Layer: 5
   m_Name: Buy Refillable Health
   m_TagString: Untagged
@@ -348,6 +445,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 104732967}
   m_CullTransparentMesh: 0
+--- !u!114 &104732972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 104732967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1819ae991829244459a0ef02d537fc00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DELETEITEM: 0
+  itemName: InfHealthPotion
+  buyWithGold: 0
+  maxItem: 6
+  cost: 500
+  realCost: 0
+  costMultiplier: 2
+  costMultAt: 3
 --- !u!1 &147110317
 GameObject:
   m_ObjectHideFlags: 0
@@ -584,6 +701,7 @@ GameObject:
   - component: {fileID: 301393958}
   - component: {fileID: 301393957}
   - component: {fileID: 301393956}
+  - component: {fileID: 301393959}
   m_Layer: 5
   m_Name: Refillable Power Potion
   m_TagString: Untagged
@@ -690,6 +808,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 301393954}
   m_CullTransparentMesh: 0
+--- !u!114 &301393959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301393954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1819ae991829244459a0ef02d537fc00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DELETEITEM: 0
+  itemName: InfPowerPotion
+  buyWithGold: 0
+  maxItem: 2
+  cost: 500
+  realCost: 0
+  costMultiplier: 2
+  costMultAt: 1
 --- !u!1 &398517288
 GameObject:
   m_ObjectHideFlags: 0
@@ -890,6 +1028,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 507216877}
   m_CullTransparentMesh: 0
+--- !u!1 &624179579
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 624179580}
+  - component: {fileID: 624179581}
+  - component: {fileID: 624179582}
+  m_Layer: 5
+  m_Name: Shards
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &624179580
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624179579}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 822009959}
+  m_Father: {fileID: 1920017188}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -286.00006, y: 169.49997}
+  m_SizeDelta: {x: 50, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &624179581
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624179579}
+  m_CullTransparentMesh: 0
+--- !u!114 &624179582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624179579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300002, guid: fc401bb08cf6cc54f87db8ad1f16d98d, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
 --- !u!1 &670138289
 GameObject:
   m_ObjectHideFlags: 0
@@ -981,6 +1194,7 @@ GameObject:
   - component: {fileID: 710212001}
   - component: {fileID: 710212000}
   - component: {fileID: 710211999}
+  - component: {fileID: 710212002}
   m_Layer: 5
   m_Name: Buy Ad-Free
   m_TagString: Untagged
@@ -1087,6 +1301,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 710211997}
   m_CullTransparentMesh: 0
+--- !u!114 &710212002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 710211997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1819ae991829244459a0ef02d537fc00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DELETEITEM: 0
+  itemName: AdFree
+  buyWithGold: 0
+  maxItem: 1
+  cost: 1500
+  realCost: 0
+  costMultiplier: 100
+  costMultAt: 5
 --- !u!1 &745602607
 GameObject:
   m_ObjectHideFlags: 0
@@ -1178,6 +1412,7 @@ GameObject:
   - component: {fileID: 765394415}
   - component: {fileID: 765394414}
   - component: {fileID: 765394413}
+  - component: {fileID: 765394416}
   m_Layer: 5
   m_Name: Refillable Stamina Potion
   m_TagString: Untagged
@@ -1284,6 +1519,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 765394411}
   m_CullTransparentMesh: 0
+--- !u!114 &765394416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765394411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1819ae991829244459a0ef02d537fc00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DELETEITEM: 0
+  itemName: InfStaminaPotion
+  buyWithGold: 0
+  maxItem: 4
+  cost: 500
+  realCost: 0
+  costMultiplier: 3
+  costMultAt: 2
 --- !u!1 &800608514
 GameObject:
   m_ObjectHideFlags: 0
@@ -1362,6 +1617,99 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 800608514}
+  m_CullTransparentMesh: 0
+--- !u!1 &822009958
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 822009959}
+  - component: {fileID: 822009962}
+  - component: {fileID: 822009961}
+  - component: {fileID: 822009960}
+  m_Layer: 5
+  m_Name: ShardsAmt
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &822009959
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822009958}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.40000004, y: 0.40000004, z: 0.02}
+  m_Children: []
+  m_Father: {fileID: 624179580}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -96.499664, y: -6.400116}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &822009960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822009958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3730ab9743bf7f94bb97e1998e863da6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trueForGold: 0
+--- !u!114 &822009961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822009958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.8207547, g: 0.035399873, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 24
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 40
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: SHARD AMOUNT
+--- !u!222 &822009962
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822009958}
   m_CullTransparentMesh: 0
 --- !u!1 &881038338
 GameObject:
@@ -1999,6 +2347,7 @@ GameObject:
   - component: {fileID: 1213014524}
   - component: {fileID: 1213014523}
   - component: {fileID: 1213014522}
+  - component: {fileID: 1213014525}
   m_Layer: 5
   m_Name: Refillable Revive Potion
   m_TagString: Untagged
@@ -2105,6 +2454,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1213014520}
   m_CullTransparentMesh: 0
+--- !u!114 &1213014525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213014520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1819ae991829244459a0ef02d537fc00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DELETEITEM: 0
+  itemName: InfRevivePotion
+  buyWithGold: 0
+  maxItem: 1
+  cost: 1000
+  realCost: 0
+  costMultiplier: 2
+  costMultAt: 1
 --- !u!1 &1262750165
 GameObject:
   m_ObjectHideFlags: 0
@@ -2492,6 +2861,8 @@ MonoBehaviour:
   - {fileID: 208528686}
   - {fileID: 1662540965}
   - {fileID: 1038978288}
+  - {fileID: 822009961}
+  - {fileID: 1660634828}
   shopMenuButtonImages:
   - {fileID: 1148574320}
   - {fileID: 1749055160}
@@ -2503,6 +2874,8 @@ MonoBehaviour:
   - {fileID: 765394414}
   - {fileID: 104732970}
   - {fileID: 710212000}
+  - {fileID: 624179582}
+  - {fileID: 44199151}
   shopMenuButtons:
   - {fileID: 1148574319}
   - {fileID: 1749055159}
@@ -2671,6 +3044,99 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1527117971}
+  m_CullTransparentMesh: 0
+--- !u!1 &1660634825
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1660634826}
+  - component: {fileID: 1660634829}
+  - component: {fileID: 1660634828}
+  - component: {fileID: 1660634827}
+  m_Layer: 5
+  m_Name: GoldAmt
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1660634826
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660634825}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.02}
+  m_Children: []
+  m_Father: {fileID: 44199149}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -92.74002, y: -6.9799805}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1660634827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660634825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3730ab9743bf7f94bb97e1998e863da6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trueForGold: 1
+--- !u!114 &1660634828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660634825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.6509434, g: 0.50305533, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 24
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 40
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: GOLD AMOUNT
+--- !u!222 &1660634829
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660634825}
   m_CullTransparentMesh: 0
 --- !u!1 &1662540963
 GameObject:
@@ -2842,6 +3308,7 @@ GameObject:
   - component: {fileID: 1749055161}
   - component: {fileID: 1749055160}
   - component: {fileID: 1749055159}
+  - component: {fileID: 1749055162}
   m_Layer: 5
   m_Name: Health Potion
   m_TagString: Untagged
@@ -2948,6 +3415,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1749055157}
   m_CullTransparentMesh: 0
+--- !u!114 &1749055162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1749055157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1819ae991829244459a0ef02d537fc00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DELETEITEM: 0
+  itemName: HealthPotion
+  buyWithGold: 1
+  maxItem: 12
+  cost: 25
+  realCost: 0
+  costMultiplier: 3
+  costMultAt: 3
 --- !u!1 &1762619815
 GameObject:
   m_ObjectHideFlags: 0
@@ -3197,6 +3684,7 @@ GameObject:
   - component: {fileID: 1814348604}
   - component: {fileID: 1814348603}
   - component: {fileID: 1814348602}
+  - component: {fileID: 1814348605}
   m_Layer: 5
   m_Name: Stamina Potion
   m_TagString: Untagged
@@ -3303,6 +3791,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1814348600}
   m_CullTransparentMesh: 0
+--- !u!114 &1814348605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1814348600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1819ae991829244459a0ef02d537fc00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DELETEITEM: 0
+  itemName: StaminaPotion
+  buyWithGold: 1
+  maxItem: 8
+  cost: 50
+  realCost: 0
+  costMultiplier: 3
+  costMultAt: 2
 --- !u!1 &1868607966
 GameObject:
   m_ObjectHideFlags: 0
@@ -3315,6 +3823,7 @@ GameObject:
   - component: {fileID: 1868607970}
   - component: {fileID: 1868607969}
   - component: {fileID: 1868607968}
+  - component: {fileID: 1868607971}
   m_Layer: 5
   m_Name: Power Potion
   m_TagString: Untagged
@@ -3421,6 +3930,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1868607966}
   m_CullTransparentMesh: 0
+--- !u!114 &1868607971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868607966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1819ae991829244459a0ef02d537fc00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DELETEITEM: 0
+  itemName: PowerPotion
+  buyWithGold: 1
+  maxItem: 5
+  cost: 100
+  realCost: 0
+  costMultiplier: 2
+  costMultAt: 1
 --- !u!1 &1868822021
 GameObject:
   m_ObjectHideFlags: 0
@@ -3537,6 +4066,8 @@ RectTransform:
   - {fileID: 765394412}
   - {fileID: 104732968}
   - {fileID: 710211998}
+  - {fileID: 624179580}
+  - {fileID: 44199149}
   m_Father: {fileID: 1372934399}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
