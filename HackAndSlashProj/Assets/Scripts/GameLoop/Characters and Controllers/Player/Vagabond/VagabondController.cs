@@ -9,7 +9,7 @@ public class VagabondController : PlayerController {
         int stamDamage = stamina;
         switch (targetCS.GetState()) {
             case CharState.HAttack:
-                stamDamage *= 100;
+                stamDamage *= 1000;
                 break;
 
             case CharState.HDefend:
@@ -17,11 +17,11 @@ public class VagabondController : PlayerController {
                 break;
 
             case CharState.HSpecial:
-                stamDamage *= 2;
+                stamDamage *= 5;
                 break;
 
             case CharState.LAttack:
-                stamDamage *= 75;
+                stamDamage *= 1000;
                 break;
 
             case CharState.LDefend:
@@ -29,7 +29,7 @@ public class VagabondController : PlayerController {
                 break;
 
             case CharState.LSpecial:
-                stamDamage *= 2;
+                stamDamage *= 5;
                 break;
 
             case CharState.Normal:

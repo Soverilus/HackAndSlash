@@ -122,6 +122,14 @@ AnimationClip:
     floatParameter: 0.1
     intParameter: 0
     messageOptions: 0
+  - time: 0.083333336
+    functionName: StaminaCost
+    data: 
+    objectReferenceParameter: {fileID: 11500000, guid: 037306cb06fde5845b27f6d5a9275b35,
+      type: 3}
+    floatParameter: 0
+    intParameter: 5
+    messageOptions: 0
   - time: 0.16666667
     functionName: EnumFromString
     data: Normal
@@ -154,6 +162,14 @@ AnimationClip:
     floatParameter: 0.1
     intParameter: 0
     messageOptions: 0
+  - time: 0.25
+    functionName: StaminaCost
+    data: 
+    objectReferenceParameter: {fileID: 11500000, guid: 037306cb06fde5845b27f6d5a9275b35,
+      type: 3}
+    floatParameter: 0
+    intParameter: 5
+    messageOptions: 0
   - time: 0.33333334
     functionName: EnumFromString
     data: Normal
@@ -185,6 +201,14 @@ AnimationClip:
       type: 3}
     floatParameter: 0.1
     intParameter: 0
+    messageOptions: 0
+  - time: 0.41666666
+    functionName: StaminaCost
+    data: 
+    objectReferenceParameter: {fileID: 11500000, guid: 037306cb06fde5845b27f6d5a9275b35,
+      type: 3}
+    floatParameter: 0
+    intParameter: 5
     messageOptions: 0
   - time: 0.5
     functionName: EnumFromString

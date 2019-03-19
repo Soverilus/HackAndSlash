@@ -92,12 +92,12 @@ AnimationClip:
     intParameter: 2
     messageOptions: 0
   - time: 0.083333336
-    functionName: DamageStamina
+    functionName: StaminaCost
     data: 
     objectReferenceParameter: {fileID: 11500000, guid: 037306cb06fde5845b27f6d5a9275b35,
       type: 3}
     floatParameter: 0
-    intParameter: 10
+    intParameter: 35
     messageOptions: 0
   - time: 0.083333336
     functionName: EnumFromString

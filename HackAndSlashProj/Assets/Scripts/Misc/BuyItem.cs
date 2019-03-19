@@ -36,7 +36,7 @@ public class BuyItem : MonoBehaviour {
 
     private void Update() {
         if (PlayerPrefs.HasKey(itemName) && PlayerPrefs.GetInt(itemName) % costMultAt == 0) {
-            realCost = cost * costMultiplier * PlayerPrefs.GetInt(itemName);
+            realCost = cost + costMultiplier * PlayerPrefs.GetInt(itemName);
         }
         if ((PlayerPrefs.GetInt("Gold") < realCost && buyWithGold) ||
         (PlayerPrefs.GetInt("Shards") < realCost && !buyWithGold)||

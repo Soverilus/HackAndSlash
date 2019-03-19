@@ -180,13 +180,13 @@ public class OnActionPress : MonoBehaviour {
                 isActing = true;
                 //Start call
                 myPlayerController.StartHeavyDefend();
-                Debug.Log("Start Right");
+                //Debug.Log("Start Right");
                 isHeld = true;
             }
             if (isHeld && end) {
                 //End call
                 myPlayerController.EndHeavyDefend();
-                Debug.Log("End Right");
+                //Debug.Log("End Right");
                 ResetAction();
                 rightActive = false;
             }
@@ -196,7 +196,7 @@ public class OnActionPress : MonoBehaviour {
             if (!isActing) {
                 isActing = true;
                 myPlayerController.LightDefend();
-                Debug.Log("Light Right");
+                //Debug.Log("Light Right");
                 ResetAction();
                 rightActive = false;
             }
@@ -210,13 +210,13 @@ public class OnActionPress : MonoBehaviour {
                 //Start call
                 isActing = true;
                 myPlayerController.StartHeavyAttack();
-                Debug.Log("Start Left");
+                //Debug.Log("Start Left");
                 isHeld = true;
             }
             if (isHeld && end) {
                 //End call
                 myPlayerController.EndHeavyAttack();
-                Debug.Log("End Left");
+                //Debug.Log("End Left");
                 ResetAction();
                 leftActive = false;
             }
@@ -226,7 +226,7 @@ public class OnActionPress : MonoBehaviour {
             if (!isActing) {
                 isActing = true;
                 myPlayerController.LightAttack();
-                Debug.Log("Light Left");
+                //Debug.Log("Light Left");
                 ResetAction();
                 leftActive = false;
             }
@@ -241,13 +241,13 @@ public class OnActionPress : MonoBehaviour {
                 isActing = true;
                 startBoth = true;
                 myPlayerController.StartHeavySpecial();
-                Debug.Log("Start Both");
+                //Debug.Log("Start Both");
                 isHeld = true;
             }
             if (isHeld && end && startBoth) {
                 //End call
                 myPlayerController.EndHeavySpecial();
-                Debug.Log("End Both");
+                //Debug.Log("End Both");
                 rightActive = false;
                 leftActive = false;
                 ResetAction();
@@ -258,7 +258,7 @@ public class OnActionPress : MonoBehaviour {
             if (!isActing) {
                 isActing = true;
                 myPlayerController.LightSpecial();
-                Debug.Log("Light Both");
+                //Debug.Log("Light Both");
                 rightActive = false;
                 leftActive = false;
                 ResetAction();

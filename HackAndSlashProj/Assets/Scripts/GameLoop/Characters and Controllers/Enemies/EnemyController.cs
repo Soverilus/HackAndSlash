@@ -12,6 +12,7 @@ public class EnemyController : CreatureController {
     protected float myTimer;
     protected float actionDC;
     bool AIEnabled = true;
+    protected float staminaAIActivate;
 
     protected virtual void SetactionDC() {
         //Time before the AI attempts another action
@@ -37,16 +38,16 @@ public class EnemyController : CreatureController {
                     myTimer += Time.deltaTime * actionDC;
                 }
                 if (myStamina < maxStamina && myStamina > 0f) {
-                    if (myStamina > 0.5 * maxStamina) {
+                    if (myStamina > staminaAIActivate * maxStamina) {
                         myTimer += Time.deltaTime;
                     }
-                    if (myStamina <= 0.5 * maxStamina) {
+                    if (myStamina <= staminaAIActivate * maxStamina) {
                         myTimer += 0.1f * Time.deltaTime;
                     }
                 }
                 if (myTimer + Random.Range(0.01f, 0.5f * actionDC) >= actionDC && AIEnabled) {
                     ActionAIModule();
-                    Debug.Log(myTimer);
+                    //Debug.Log(myTimer);
                     myTimer = 0f;
                 }
             }
@@ -151,7 +152,7 @@ public class EnemyController : CreatureController {
                 break;
 
             default:
-                Debug.LogError("targetState is out of bounds!");
+                //Debug.LogError("targetState is out of bounds!");
                 break;
         }
 
@@ -167,36 +168,36 @@ public class EnemyController : CreatureController {
             switch (myIndex) {
                 case (int)Actions.HAttack:
                     StartHeavyAttack();
-                    Debug.Log(gameObject + " has performed a StartHeavyAttack");
+                    //Debug.Log(gameObject + " has performed a StartHeavyAttack");
                     break;
 
                 case (int)Actions.HDefend:
                     StartHeavyDefend();
-                    Debug.Log(gameObject + " has performed a StartHeavyDefend");
+                    //Debug.Log(gameObject + " has performed a StartHeavyDefend");
                     break;
 
                 case (int)Actions.HSpecial:
                     StartHeavySpecial();
-                    Debug.Log(gameObject + " has performed a StartHeavySpecial");
+                    //Debug.Log(gameObject + " has performed a StartHeavySpecial");
                     break;
 
                 case (int)Actions.LAttack:
                     LightAttack();
-                    Debug.Log(gameObject + " has performed a LightAttack");
+                    //Debug.Log(gameObject + " has performed a LightAttack");
                     break;
 
                 case (int)Actions.LDefend:
                     LightDefend();
-                    Debug.Log(gameObject + " has performed a LightDefend");
+                   // Debug.Log(gameObject + " has performed a LightDefend");
                     break;
 
                 case (int)Actions.LSpecial:
                     LightSpecial();
-                    Debug.Log(gameObject + " has performed a LightSpecial");
+                   // Debug.Log(gameObject + " has performed a LightSpecial");
                     break;
 
                 case (int)Actions.Nothing:
-                    Debug.Log(gameObject + " is lazing about..!");
+                   // Debug.Log(gameObject + " is lazing about..!");
                     break;
 
                 default:

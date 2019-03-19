@@ -56,9 +56,11 @@ public class GameLoopController : MonoBehaviour {
     }
 
     void AddGold() {
-        PlayerPrefs.SetInt("Gold", (PlayerPrefs.GetInt("Gold") + PlayerPrefs.GetInt("GameRound") + Random.Range(1, 11)) * rewardTier);
+        PlayerPrefs.SetInt("Gold", PlayerPrefs.GetInt("Gold") + (PlayerPrefs.GetInt("GameRound") + Random.Range(1, 11)) * rewardTier);
     }
+
     public void OnVictory() {
+        AddGold();
         PlayerPrefs.SetInt("PlayerHealth", myCS.GetHealth());
         //determine score increase from enemy type and time and chance
         //chance to add currency based on round count
@@ -66,7 +68,9 @@ public class GameLoopController : MonoBehaviour {
         if (PlayerPrefs.HasKey("GameRound")) {
             PlayerPrefs.SetInt("GameRound", PlayerPrefs.GetInt("GameRound") + 1);
         }
-
+        else {
+            PlayerPrefs.SetInt("GameRound", 1);
+        }
             loadScene = "GoblinFight";
             Invoke("LoadScene", 3f);
     }

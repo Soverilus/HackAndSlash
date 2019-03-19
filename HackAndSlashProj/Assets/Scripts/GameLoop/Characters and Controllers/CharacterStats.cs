@@ -20,8 +20,18 @@ public class CharacterStats : MonoBehaviour {
     public bool isDead = false;
 
     private void Start() {
+        StartAlt();
         myCC = GetComponent<CreatureController>();
         SettleStats();
+        LateStartAlt();
+    }
+
+    protected virtual void StartAlt() {
+        //this has been left empty on purpose
+    }
+
+    protected virtual void LateStartAlt() {
+        //this has been left empty on purpose
     }
 
     public void SetHealth(int myHealth) {
@@ -92,7 +102,7 @@ public class CharacterStats : MonoBehaviour {
         maxHealth = 150;
     }
     public virtual void SetMaxStamina() {
-        maxStamina = 150;
+        maxStamina = 100;
     }
     public virtual void SetBaseDamage() {
         baseDamage = 25;
@@ -104,12 +114,20 @@ public class CharacterStats : MonoBehaviour {
         health += Mathf.Abs(HPamount);
     }
     //myAttacker is for potential counter damage
-    public void DamageStamina(int cost) {
+    public virtual void DamageStamina(int damage) {
+        stamina -= damage;
+        equivStamina -= damage;
+        if (equivStamina <= 0) {
+            equivStamina = 0;
+            myCC.Stagger();
+        }
+        timer = 0;
+    }
+    public virtual void StaminaCost(int cost) {
         stamina -= cost;
         equivStamina -= cost;
         if (equivStamina < 0) {
             equivStamina = 0;
-            myCC.Stagger();
         }
         timer = 0;
     }
@@ -177,5 +195,15 @@ public class CharacterStats : MonoBehaviour {
     }
     protected virtual void HSpecialDamage(int damage, GameObject myAttacker) {
         health -= Mathf.Abs(damage);
+    }
+
+    public virtual void HealthPotion() {
+        Heal(maxHealth / 2);
+    }
+    public virtual void StaminaPotion() {
+        HealStam(maxStamina);
+    }
+    public virtual void PowerPotion() {
+        baseDamage += 10;
     }
 }

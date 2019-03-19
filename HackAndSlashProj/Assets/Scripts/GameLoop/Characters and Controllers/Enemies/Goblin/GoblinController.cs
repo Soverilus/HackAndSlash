@@ -4,9 +4,10 @@ using UnityEngine;
 using static GAV.GlobalCharacterVariables;
 public class GoblinController : EnemyController {
 
-
+    
     protected override void SetactionDC() {
         actionDC = 3f;
+        staminaAIActivate = 0.25f;
     }
     protected override void ActionAIModuleCalc(CharState targetState) {
         myActions = ReturnActionArray();

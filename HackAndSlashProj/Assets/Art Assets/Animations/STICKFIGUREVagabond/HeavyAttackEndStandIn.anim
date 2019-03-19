@@ -90,12 +90,12 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.16666667
-    functionName: DamageStamina
+    functionName: StaminaCost
     data: 
     objectReferenceParameter: {fileID: 11500000, guid: 037306cb06fde5845b27f6d5a9275b35,
       type: 3}
     floatParameter: 0
-    intParameter: 30
+    intParameter: 45
     messageOptions: 0
   - time: 0.25
     functionName: DamageTarget

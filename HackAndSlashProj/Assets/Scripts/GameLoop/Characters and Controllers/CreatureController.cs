@@ -8,6 +8,7 @@ public class CreatureController : MonoBehaviour {
     protected CharacterStats myCS;
     [SerializeField]
     protected CharacterStats targetCS;
+    protected int myStamBoundary = 1;
 
     protected virtual void Start() {
         myAnim = GetComponent<Animator>();
@@ -34,7 +35,7 @@ public class CreatureController : MonoBehaviour {
 
     //USE THIS IN ANIMATOR FRAMES AS A FUNCTION TO DETERMINE ABILITY STAMINA COST
     public virtual void StaminaCost(int staminaAmount) {
-        myCS.DamageStamina(staminaAmount);
+        myCS.StaminaCost(staminaAmount);
     }
 
     //USE THIS IN ANIMATOR FRAMES AS A FUNCTION TO DETERMINE STAMINA DAMAGE
@@ -88,75 +89,103 @@ public class CreatureController : MonoBehaviour {
     }
 
     public virtual void LightAttack() {
-        Debug.Log(gameObject.name + " Performed LightAttack");
-        myCS.ChangeState(CharState.LAttack);
-        myAnim.SetTrigger("LAttack");
+        //Debug.Log(gameObject.name + " Performed LightAttack");
+        if (myStamBoundary <= myCS.GetStamina()) {
+            myCS.ChangeState(CharState.LAttack);
+            myAnim.SetTrigger("LAttack");
+        }
         //start animation
     }
 
     public virtual void StartHeavyAttack() {
-        Debug.Log(gameObject.name + " Performed StartHeavyAttack");
-        myCS.ChangeState(CharState.HAttack);
-        myAnim.SetBool("HAttack", true);
+        //Debug.Log(gameObject.name + " Performed StartHeavyAttack");
+        if (myStamBoundary <= myCS.GetStamina()) {
+            myCS.ChangeState(CharState.HAttack);
+            myAnim.SetBool("HAttack", true);
+        }
         //start and freeze animation
         //chare up action (with feedback for full and partial charge)
     }
 
     public virtual void EndHeavyAttack() {
-        Debug.Log(gameObject.name + " Performed EndHeavyAttack");
-        myCS.ChangeState(CharState.Normal);
-        myAnim.SetBool("HAttack", false);
+        // Debug.Log(gameObject.name + " Performed EndHeavyAttack");
+        if (myStamBoundary <= myCS.GetStamina()) {
+            myCS.ChangeState(CharState.Normal);
+            myAnim.SetBool("HAttack", false);
+        }
         //unfreeze animation
     }
 
     public virtual void LightDefend() {
-        Debug.Log(gameObject.name + " Performed LightDefend");
-        myCS.ChangeState(CharState.LDefend);
-        myAnim.SetTrigger("LDefend");
+        //Debug.Log(gameObject.name + " Performed LightDefend");
+        if (myStamBoundary <= myCS.GetStamina()) {
+            myCS.ChangeState(CharState.LDefend);
+            myAnim.SetTrigger("LDefend");
+        }
         //start animation
     }
 
     public virtual void StartHeavyDefend() {
-        Debug.Log(gameObject.name + " Performed StartHeavyDefend");
-        myCS.ChangeState(CharState.HDefend);
-        myAnim.SetBool("HDefend", true);
+        //Debug.Log(gameObject.name + " Performed StartHeavyDefend");
+        if (myStamBoundary <= myCS.GetStamina()) {
+            myCS.ChangeState(CharState.HDefend);
+            myAnim.SetBool("HDefend", true);
+        }
         //start and freeze animation
         //chare up action (with feedback for full and partial charge)
     }
 
     public virtual void EndHeavyDefend() {
-        Debug.Log(gameObject.name + " Performed EndHeavyDefend");
-        myCS.ChangeState(CharState.Normal);
-        myAnim.SetBool("HDefend", false);
+        //Debug.Log(gameObject.name + " Performed EndHeavyDefend");
+        if (myStamBoundary <= myCS.GetStamina()) {
+            myCS.ChangeState(CharState.Normal);
+            myAnim.SetBool("HDefend", false);
+        }
         //unfreeze animation
     }
 
     public virtual void LightSpecial() {
-        Debug.Log(gameObject.name + " Performed LightSpecial");
-        myCS.ChangeState(CharState.LDefend);
-        myAnim.SetTrigger("LSpecial");
+        // Debug.Log(gameObject.name + " Performed LightSpecial");
+        if (myStamBoundary <= myCS.GetStamina()) {
+            myCS.ChangeState(CharState.LDefend);
+            myAnim.SetTrigger("LSpecial");
+        }
         //start animation
     }
 
     public virtual void StartHeavySpecial() {
-        Debug.Log(gameObject.name + " Performed StartHeavySpecial");
-        myCS.ChangeState(CharState.HSpecial);
-        myAnim.SetBool("HSpecial", true);
+        //Debug.Log(gameObject.name + " Performed StartHeavySpecial");
+        if (myStamBoundary <= myCS.GetStamina()) {
+            myCS.ChangeState(CharState.HSpecial);
+            myAnim.SetBool("HSpecial", true);
+        }
         //start and freeze animation
         //chare up action (with feedback for full and partial charge)
     }
 
     public virtual void EndHeavySpecial() {
-        Debug.Log(gameObject.name + " Performed EndHeavySpecial");
-        myCS.ChangeState(CharState.Normal);
-        myAnim.SetBool("HSpecial", false);
+        //Debug.Log(gameObject.name + " Performed EndHeavySpecial");
+        if (myStamBoundary <= myCS.GetStamina()) {
+            myCS.ChangeState(CharState.Normal);
+            myAnim.SetBool("HSpecial", false);
+        }
         //unfreeze animation
     }
 
     public virtual void Stagger() {
-        Debug.Log(gameObject.name + " Performed Stagger");
-        myCS.ChangeState(CharState.Stunned);
-        myAnim.SetTrigger("Stunned");
+        //Debug.Log(gameObject.name + " Performed Stagger");
+        if (myCS.GetState() != CharState.Stunned) {
+            myCS.ChangeState(CharState.Stunned);
+            ResetStunned();
+            myAnim.SetTrigger("Stunned");
+        }
         //start animation
+    }
+
+    public virtual void ResetStunned() {
+        string[] myTriggers = new string[] { "HSpecial", "LSpecial", "HDefend", "LDefend", "HAttack", "LAttack" };
+        for (int i = 0; i < myTriggers.Length; i++) {
+            myAnim.ResetTrigger(myTriggers[i]);
+        }
     }
 }

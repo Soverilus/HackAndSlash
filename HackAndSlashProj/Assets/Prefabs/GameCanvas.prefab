@@ -185,18 +185,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3038042453938727376}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6605654777355280143}
-  m_Father: {fileID: 4746647794984887038}
-  m_RootOrder: 0
+  m_Father: {fileID: 7739736503073058337}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000049591, y: 0.0000095367}
-  m_SizeDelta: {x: 199.9, y: 100}
+  m_AnchoredPosition: {x: 35.19, y: -194.49}
+  m_SizeDelta: {x: 102.62, y: 61.113}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8051981578140306139
 CanvasRenderer:
@@ -301,6 +301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: HealthPotion
+  potionAmount: 0
 --- !u!1 &3336011348896397480
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,18 +408,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3567763703518417754}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4351656268078728101}
-  m_Father: {fileID: 3487805148366698398}
-  m_RootOrder: 0
+  m_Father: {fileID: 7739736503073058337}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000044823, y: 0.0000095367}
-  m_SizeDelta: {x: 199.9, y: 100}
+  m_AnchoredPosition: {x: 136.11, y: -194.49}
+  m_SizeDelta: {x: 99.21, y: 61.115}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4778174813324624445
 CanvasRenderer:
@@ -523,42 +524,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: StaminaPotion
---- !u!1 &3698360791236489592
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4746647794984887038}
-  m_Layer: 5
-  m_Name: HealthPotion
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &4746647794984887038
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3698360791236489592}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 9164885979241862576}
-  m_Father: {fileID: 5046087330166248094}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -300.05, y: 0}
-  m_SizeDelta: {x: 199.9, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  potionAmount: 0
 --- !u!1 &4207152075492185321
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,18 +552,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4207152075492185321}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7920960387141304346}
-  m_Father: {fileID: 410748841554886065}
-  m_RootOrder: 0
+  m_Father: {fileID: 7739736503073058337}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000044823, y: 0.0000095367}
-  m_SizeDelta: {x: 199.9, y: 100}
+  m_AnchoredPosition: {x: 234.56, y: -194.49}
+  m_SizeDelta: {x: 97.7, y: 61.118}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1725396162894740896
 CanvasRenderer:
@@ -702,153 +668,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: PowerPotion
---- !u!1 &4992042117293323814
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3487805148366698398}
-  m_Layer: 5
-  m_Name: StaminaPotion
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &3487805148366698398
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4992042117293323814}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2139553106484352390}
-  m_Father: {fileID: 5046087330166248094}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100.14, y: -0.0000011907}
-  m_SizeDelta: {x: 199.9, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &5302125570754765578
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6543470794574906008}
-  m_Layer: 5
-  m_Name: RevivePotion
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &6543470794574906008
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5302125570754765578}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 5377791987492005030}
-  m_Father: {fileID: 5046087330166248094}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 299.66, y: -0.0000011907}
-  m_SizeDelta: {x: 199.9, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &5701488185970648821
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 410748841554886065}
-  m_Layer: 5
-  m_Name: PowerPotion
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &410748841554886065
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5701488185970648821}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 637554124758131105}
-  m_Father: {fileID: 5046087330166248094}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 99.76, y: -0.0000011907}
-  m_SizeDelta: {x: 199.9, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &6845753020283218649
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5046087330166248094}
-  m_Layer: 5
-  m_Name: Item Use
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &5046087330166248094
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6845753020283218649}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4746647794984887038}
-  - {fileID: 3487805148366698398}
-  - {fileID: 410748841554886065}
-  - {fileID: 6543470794574906008}
-  m_Father: {fileID: 7739736502992678452}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 400, y: -408.6}
-  m_SizeDelta: {x: 800, y: 86.5}
-  m_Pivot: {x: 0.5, y: 0.5}
+  potionAmount: 0
 --- !u!1 &7739736502170972868
 GameObject:
   m_ObjectHideFlags: 0
@@ -918,7 +738,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -4.049988, y: 0}
+  m_AnchoredPosition: {x: -4.0499725, y: 0}
   m_SizeDelta: {x: -0.73, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7739736502360800115
@@ -1062,7 +882,7 @@ RectTransform:
   - {fileID: 7739736504021674110}
   - {fileID: 7739736503560176430}
   m_Father: {fileID: 7739736503073058337}
-  m_RootOrder: 2
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1415,8 +1235,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.25, y: 0}
   m_AnchorMax: {x: 0.75000006, y: 0.09222223}
-  m_AnchoredPosition: {x: -400.00006, y: -430}
-  m_SizeDelta: {x: 800.0001, y: 83}
+  m_AnchoredPosition: {x: -301.3, y: -204.3}
+  m_SizeDelta: {x: 197.4, y: 83}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7739736502973006692
 MonoBehaviour:
@@ -1497,9 +1317,8 @@ RectTransform:
   m_Children:
   - {fileID: 7739736502973006693}
   - {fileID: 7739736503817486733}
-  - {fileID: 5046087330166248094}
   m_Father: {fileID: 7739736503073058337}
-  m_RootOrder: 1
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1553,6 +1372,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 7739736503426017539}
+  - {fileID: 9164885979241862576}
+  - {fileID: 2139553106484352390}
+  - {fileID: 637554124758131105}
+  - {fileID: 5377791987492005030}
   - {fileID: 7739736502992678452}
   - {fileID: 7739736502474289005}
   m_Father: {fileID: 0}
@@ -1599,7 +1422,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1600, y: 900}
+  m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1842,8 +1665,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 619, y: 313}
-  m_SizeDelta: {x: 362, y: 108.6}
+  m_AnchoredPosition: {x: 292.86, y: 90.6}
+  m_SizeDelta: {x: 214.29, y: 36}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7739736503426017549
 CanvasRenderer:
@@ -1866,7 +1689,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1879,7 +1702,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 40
+    m_MaxSize: 50
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -2046,8 +1869,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 0.25, y: 0}
   m_AnchorMax: {x: 0.75000006, y: 0.09222223}
-  m_AnchoredPosition: {x: 400.1, y: 385}
-  m_SizeDelta: {x: 800.0001, y: 83}
+  m_AnchoredPosition: {x: 307.7, y: 171}
+  m_SizeDelta: {x: 183.4, y: 66.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7739736503560176425
 MonoBehaviour:
@@ -2390,10 +2213,10 @@ RectTransform:
   m_Father: {fileID: 7739736502992678452}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.25, y: 0.09222223}
-  m_AnchorMax: {x: 0.75000006, y: 0.1988889}
-  m_AnchoredPosition: {x: -400.00006, y: -387.9}
-  m_SizeDelta: {x: 800.0001, y: 96}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -207.4, y: -178.2}
+  m_SizeDelta: {x: 385.2, y: 61.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7739736503817486732
 MonoBehaviour:
@@ -2554,8 +2377,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 0.25, y: 0.09222223}
   m_AnchorMax: {x: 0.75000006, y: 0.1988889}
-  m_AnchoredPosition: {x: 400, y: 426}
-  m_SizeDelta: {x: 800.0001, y: 96}
+  m_AnchoredPosition: {x: 227.7, y: 199}
+  m_SizeDelta: {x: 344.8, y: 68.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7739736504021674105
 MonoBehaviour:
@@ -2707,18 +2530,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8072266948000639432}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1951060167424211055}
-  m_Father: {fileID: 6543470794574906008}
-  m_RootOrder: 0
+  m_Father: {fileID: 7739736503073058337}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000049591, y: 0.0000095367}
-  m_SizeDelta: {x: 199.9, y: 100}
+  m_AnchoredPosition: {x: 363.26, y: -200.03}
+  m_SizeDelta: {x: 73.48, y: 50.04}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2378677630437430642
 CanvasRenderer:
@@ -2796,18 +2619,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8758341041931856197}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3897246320439704744}
-        m_MethodName: DrinkPotion
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &3897246320439704744
@@ -2823,6 +2635,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: RevivePotion
+  potionAmount: 0
 --- !u!1 &8366322738271343333
 GameObject:
   m_ObjectHideFlags: 0
