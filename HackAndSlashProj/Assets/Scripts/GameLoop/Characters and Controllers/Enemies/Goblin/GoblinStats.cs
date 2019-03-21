@@ -9,7 +9,7 @@ public class GoblinStats : EnemyStats {
 
     public override void SetMaxStamina() {
         maxStamina = 60;
-        staminaRegMult = 20;
+        staminaRegMult = 50;
     }
 
     protected override void SetRewardTier() {

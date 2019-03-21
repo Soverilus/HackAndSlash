@@ -83,7 +83,7 @@ AnimationClip:
   m_Events:
   - time: 0
     functionName: EnumFromString
-    data: Normal
+    data: HAttack
     objectReferenceParameter: {fileID: 11500000, guid: 037306cb06fde5845b27f6d5a9275b35,
       type: 3}
     floatParameter: 0
@@ -107,7 +107,7 @@ AnimationClip:
     messageOptions: 0
   - time: 0.25
     functionName: EnumFromString
-    data: HAttack
+    data: Normal
     objectReferenceParameter: {fileID: 11500000, guid: 037306cb06fde5845b27f6d5a9275b35,
       type: 3}
     floatParameter: 0

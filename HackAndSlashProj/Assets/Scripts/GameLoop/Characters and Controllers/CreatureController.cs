@@ -91,7 +91,6 @@ public class CreatureController : MonoBehaviour {
     public virtual void LightAttack() {
         //Debug.Log(gameObject.name + " Performed LightAttack");
         if (myStamBoundary <= myCS.GetStamina()) {
-            myCS.ChangeState(CharState.LAttack);
             myAnim.SetTrigger("LAttack");
         }
         //start animation
@@ -100,7 +99,6 @@ public class CreatureController : MonoBehaviour {
     public virtual void StartHeavyAttack() {
         //Debug.Log(gameObject.name + " Performed StartHeavyAttack");
         if (myStamBoundary <= myCS.GetStamina()) {
-            myCS.ChangeState(CharState.HAttack);
             myAnim.SetBool("HAttack", true);
         }
         //start and freeze animation
@@ -110,7 +108,6 @@ public class CreatureController : MonoBehaviour {
     public virtual void EndHeavyAttack() {
         // Debug.Log(gameObject.name + " Performed EndHeavyAttack");
         if (myStamBoundary <= myCS.GetStamina()) {
-            myCS.ChangeState(CharState.Normal);
             myAnim.SetBool("HAttack", false);
         }
         //unfreeze animation
@@ -119,7 +116,6 @@ public class CreatureController : MonoBehaviour {
     public virtual void LightDefend() {
         //Debug.Log(gameObject.name + " Performed LightDefend");
         if (myStamBoundary <= myCS.GetStamina()) {
-            myCS.ChangeState(CharState.LDefend);
             myAnim.SetTrigger("LDefend");
         }
         //start animation
@@ -128,7 +124,6 @@ public class CreatureController : MonoBehaviour {
     public virtual void StartHeavyDefend() {
         //Debug.Log(gameObject.name + " Performed StartHeavyDefend");
         if (myStamBoundary <= myCS.GetStamina()) {
-            myCS.ChangeState(CharState.HDefend);
             myAnim.SetBool("HDefend", true);
         }
         //start and freeze animation
@@ -138,7 +133,6 @@ public class CreatureController : MonoBehaviour {
     public virtual void EndHeavyDefend() {
         //Debug.Log(gameObject.name + " Performed EndHeavyDefend");
         if (myStamBoundary <= myCS.GetStamina()) {
-            myCS.ChangeState(CharState.Normal);
             myAnim.SetBool("HDefend", false);
         }
         //unfreeze animation
@@ -147,7 +141,6 @@ public class CreatureController : MonoBehaviour {
     public virtual void LightSpecial() {
         // Debug.Log(gameObject.name + " Performed LightSpecial");
         if (myStamBoundary <= myCS.GetStamina()) {
-            myCS.ChangeState(CharState.LDefend);
             myAnim.SetTrigger("LSpecial");
         }
         //start animation
@@ -156,7 +149,6 @@ public class CreatureController : MonoBehaviour {
     public virtual void StartHeavySpecial() {
         //Debug.Log(gameObject.name + " Performed StartHeavySpecial");
         if (myStamBoundary <= myCS.GetStamina()) {
-            myCS.ChangeState(CharState.HSpecial);
             myAnim.SetBool("HSpecial", true);
         }
         //start and freeze animation
@@ -166,7 +158,6 @@ public class CreatureController : MonoBehaviour {
     public virtual void EndHeavySpecial() {
         //Debug.Log(gameObject.name + " Performed EndHeavySpecial");
         if (myStamBoundary <= myCS.GetStamina()) {
-            myCS.ChangeState(CharState.Normal);
             myAnim.SetBool("HSpecial", false);
         }
         //unfreeze animation
@@ -176,13 +167,13 @@ public class CreatureController : MonoBehaviour {
         //Debug.Log(gameObject.name + " Performed Stagger");
         if (myCS.GetState() != CharState.Stunned) {
             myCS.ChangeState(CharState.Stunned);
-            ResetStunned();
+            ResetForStunned();
             myAnim.SetTrigger("Stunned");
         }
         //start animation
     }
 
-    public virtual void ResetStunned() {
+    public virtual void ResetForStunned() {
         string[] myTriggers = new string[] { "HSpecial", "LSpecial", "HDefend", "LDefend", "HAttack", "LAttack" };
         for (int i = 0; i < myTriggers.Length; i++) {
             myAnim.ResetTrigger(myTriggers[i]);

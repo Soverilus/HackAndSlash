@@ -6,7 +6,7 @@ public class GoblinController : EnemyController {
 
     
     protected override void SetactionDC() {
-        actionDC = 3f;
+        actionDC = 0.05f;
         staminaAIActivate = 0.25f;
     }
     protected override void ActionAIModuleCalc(CharState targetState) {
@@ -18,7 +18,7 @@ public class GoblinController : EnemyController {
                 myActions[(int)Actions.HAttack] += 0;
                 myActions[(int)Actions.HDefend] += 0;
                 myActions[(int)Actions.HSpecial] += 0;
-                myActions[(int)Actions.LAttack] += 25;
+                myActions[(int)Actions.LAttack] += 5;
                 myActions[(int)Actions.LDefend] += 75;
                 myActions[(int)Actions.LSpecial] += 5;
                 myActions[(int)Actions.Nothing] += 5;
@@ -31,7 +31,7 @@ public class GoblinController : EnemyController {
                 myActions[(int)Actions.LAttack] += 25;
                 myActions[(int)Actions.LDefend] += -15;
                 myActions[(int)Actions.LSpecial] += 50;
-                myActions[(int)Actions.Nothing] += 25;
+                myActions[(int)Actions.Nothing] += 5;
                 break;
 
             case CharState.HSpecial:
@@ -41,7 +41,7 @@ public class GoblinController : EnemyController {
                 myActions[(int)Actions.LAttack] += 50;
                 myActions[(int)Actions.LDefend] += 0;
                 myActions[(int)Actions.LSpecial] += 25;
-                myActions[(int)Actions.Nothing] += 25;
+                myActions[(int)Actions.Nothing] += 5;
                 break;
 
             case CharState.LAttack:
@@ -49,7 +49,7 @@ public class GoblinController : EnemyController {
                 myActions[(int)Actions.HDefend] += 0;
                 myActions[(int)Actions.HSpecial] += 0;
                 myActions[(int)Actions.LAttack] += 5;
-                myActions[(int)Actions.LDefend] += 50;
+                myActions[(int)Actions.LDefend] += 75;
                 myActions[(int)Actions.LSpecial] += 5;
                 myActions[(int)Actions.Nothing] += 5;
                 break;
@@ -58,10 +58,10 @@ public class GoblinController : EnemyController {
                 myActions[(int)Actions.HAttack] += 0;
                 myActions[(int)Actions.HDefend] += 0;
                 myActions[(int)Actions.HSpecial] += 0;
-                myActions[(int)Actions.LAttack] += 10;
+                myActions[(int)Actions.LAttack] += 5;
                 myActions[(int)Actions.LDefend] += 5;
-                myActions[(int)Actions.LSpecial] += 25;
-                myActions[(int)Actions.Nothing] += 50;
+                myActions[(int)Actions.LSpecial] += 5;
+                myActions[(int)Actions.Nothing] += 75;
                 break;
 
             case CharState.LSpecial:
@@ -70,25 +70,25 @@ public class GoblinController : EnemyController {
                 myActions[(int)Actions.HSpecial] += 0;
                 myActions[(int)Actions.LAttack] += 50;
                 myActions[(int)Actions.LDefend] += 0;
-                myActions[(int)Actions.LSpecial] += 25;
-                myActions[(int)Actions.Nothing] += 25;
+                myActions[(int)Actions.LSpecial] += 75;
+                myActions[(int)Actions.Nothing] += 50;
                 break;
 
             case CharState.Normal:
                 myActions[(int)Actions.HAttack] += 0;
                 myActions[(int)Actions.HDefend] += 0;
                 myActions[(int)Actions.HSpecial] += 0;
-                myActions[(int)Actions.LAttack] += 75;
-                myActions[(int)Actions.LDefend] += 0;
-                myActions[(int)Actions.LSpecial] += 25;
-                myActions[(int)Actions.Nothing] += 5;
+                myActions[(int)Actions.LAttack] += 10;
+                myActions[(int)Actions.LDefend] += -25;
+                myActions[(int)Actions.LSpecial] += 5;
+                myActions[(int)Actions.Nothing] += 75;
                 break;
 
             case CharState.Stunned:
                 myActions[(int)Actions.HAttack] += 0;
                 myActions[(int)Actions.HDefend] += 0;
                 myActions[(int)Actions.HSpecial] += 0;
-                myActions[(int)Actions.LAttack] += 75;
+                myActions[(int)Actions.LAttack] += 50;
                 myActions[(int)Actions.LDefend] += 0;
                 myActions[(int)Actions.LSpecial] += 10;
                 myActions[(int)Actions.Nothing] += -25;

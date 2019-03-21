@@ -89,6 +89,14 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.16666667
+    functionName: EnumFromString
+    data: LAttack
+    objectReferenceParameter: {fileID: 11500000, guid: 037306cb06fde5845b27f6d5a9275b35,
+      type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.41666666
     functionName: DamageTarget
     data: 
@@ -106,14 +114,6 @@ AnimationClip:
     intParameter: 30
     messageOptions: 0
   - time: 0.41666666
-    functionName: EnumFromString
-    data: LAttack
-    objectReferenceParameter: {fileID: 11500000, guid: 037306cb06fde5845b27f6d5a9275b35,
-      type: 3}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.5
     functionName: EnumFromString
     data: Normal
     objectReferenceParameter: {fileID: 11500000, guid: 037306cb06fde5845b27f6d5a9275b35,
