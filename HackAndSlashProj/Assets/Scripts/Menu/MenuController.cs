@@ -4,16 +4,25 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class MenuController : MonoBehaviour {
-    public SpriteRenderer shopMenuArt;
     bool fadeToShop = false;
     bool fadeToCredits = false;
+    [Header("Main Menu Items")]
+    public SpriteRenderer mainMenuArt;
     public Text[] mainMenuTexts;
     public Image[] mainMenuButtonImages;
     public Button[] mainMenuButtons;
 
+    [Header("Shop Menu Items")]
+    public SpriteRenderer shopMenuArt;
     public Text[] shopMenuTexts;
     public Image[] shopMenuButtonImages;
     public Button[] shopMenuButtons;
+
+    [Header("Credits Menu Items")]
+    public SpriteRenderer creditMenuArt;
+    public Text[] creditMenuTexts;
+    public Image[] creditMenuButtonImages;
+    public Button[] creditMenuButtons;
 
     private void Start() {
         for (int i = 0; i < mainMenuTexts.Length; i++) {
@@ -28,8 +37,17 @@ public class MenuController : MonoBehaviour {
         for (int i = 0; i < shopMenuButtonImages.Length; i++) {
             shopMenuButtonImages[i].color = new Color(shopMenuButtonImages[i].color.r, shopMenuButtonImages[i].color.g, shopMenuButtonImages[i].color.b, 0);
         }
+        for (int i = 0; i < creditMenuTexts.Length; i++) {
+            creditMenuTexts[i].color = new Color(creditMenuTexts[i].color.r, creditMenuTexts[i].color.g, creditMenuTexts[i].color.b, 0);
+        }
+        for (int i = 0; i < creditMenuButtonImages.Length; i++) {
+            creditMenuButtonImages[i].color = new Color(creditMenuButtonImages[i].color.r, creditMenuButtonImages[i].color.g, creditMenuButtonImages[i].color.b, 0);
+        }
+        mainMenuArt.color = new Color(shopMenuArt.color.r, shopMenuArt.color.g, shopMenuArt.color.b, 0);
         shopMenuArt.color = new Color(shopMenuArt.color.r, shopMenuArt.color.g, shopMenuArt.color.b, 0);
+        creditMenuArt.color = new Color(shopMenuArt.color.r, shopMenuArt.color.g, shopMenuArt.color.b, 0);
         FadeShopMenuElements(-1);
+        FadeCreditMenuElements(-1);
     }
 
     private void Update() {
@@ -37,7 +55,7 @@ public class MenuController : MonoBehaviour {
             FadeToShop();
         }
         else if (fadeToCredits) {
-
+            FadeToCredits();
         }
         else {
             FadeToMain();
@@ -54,19 +72,45 @@ public class MenuController : MonoBehaviour {
         fadeToCredits = false;
     }
 
+    void FadeToMain() {
+        if (mainMenuArt.color.a < 1) {
+            FadeMainMenuElements(1f);
+            FadeShopMenuElements(-1f);
+            FadeCreditMenuElements(-1f);
+        }
+    }
     void FadeToShop() {
         if (shopMenuArt.color.a < 1) {
             FadeMainMenuElements(-1f);
             FadeShopMenuElements(1f);
-        }
-        else {
-            //SetPurchaseMenutoActive
+            FadeCreditMenuElements(-1f);
         }
     }
-    void FadeToMain() {
-        if (shopMenuArt.color.a > 0 || mainMenuButtonImages[0].color.a < 1) {
-            FadeMainMenuElements(1f);
-            FadeShopMenuElements(-1f);
+    void FadeToCredits() {
+        FadeMainMenuElements(-1f);
+        FadeShopMenuElements(-1f);
+        FadeCreditMenuElements(1f);
+    }
+
+    void FadeMainMenuElements(float positive) {
+        mainMenuArt.color = new Color(mainMenuArt.color.r, mainMenuArt.color.g, mainMenuArt.color.b, mainMenuArt.color.a + positive * Time.deltaTime);
+        if (positive > 0) {
+            for (int i = 0; i < mainMenuButtons.Length; i++) {
+                mainMenuButtons[i].gameObject.SetActive(true);
+            }
+        }
+        else {
+            for (int i = 0; i < mainMenuButtons.Length; i++) {
+                if (mainMenuButtonImages[i].color.a <= 0f) {
+                    mainMenuButtons[i].gameObject.SetActive(false);
+                }
+            }
+        }
+        for (int i = 0; i < mainMenuTexts.Length; i++) {
+            mainMenuTexts[i].color = new Color(mainMenuTexts[i].color.r, mainMenuTexts[i].color.g, mainMenuTexts[i].color.b, mainMenuTexts[i].color.a + positive * Time.deltaTime);
+        }
+        for (int i = 0; i < mainMenuButtonImages.Length; i++) {
+            mainMenuButtonImages[i].color = new Color(mainMenuButtonImages[i].color.r, mainMenuButtonImages[i].color.g, mainMenuButtonImages[i].color.b, mainMenuButtonImages[i].color.a + positive * Time.deltaTime);
         }
     }
 
@@ -92,26 +136,28 @@ public class MenuController : MonoBehaviour {
         }
     }
 
-    void FadeMainMenuElements(float positive) {
+    void FadeCreditMenuElements(float positive) {
+        creditMenuArt.color = new Color(creditMenuArt.color.r, creditMenuArt.color.g, creditMenuArt.color.b, creditMenuArt.color.a + positive * Time.deltaTime);
         if (positive > 0) {
-            for (int i = 0; i < mainMenuButtons.Length; i++) {
-                mainMenuButtons[i].gameObject.SetActive(true);
+            for (int i = 0; i < creditMenuButtons.Length; i++) {
+                creditMenuButtons[i].gameObject.SetActive(true);
             }
         }
         else {
-            for (int i = 0; i < mainMenuButtons.Length; i++) {
-                if (mainMenuButtonImages[i].color.a <= 0f) {
-                    mainMenuButtons[i].gameObject.SetActive(false);
+            for (int i = 0; i < creditMenuButtons.Length; i++) {
+                if (creditMenuButtonImages[i].color.a <= 0f) {
+                    creditMenuButtons[i].gameObject.SetActive(false);
                 }
             }
         }
-        for (int i = 0; i < mainMenuTexts.Length; i++) {
-            mainMenuTexts[i].color = new Color(mainMenuTexts[i].color.r, mainMenuTexts[i].color.g, mainMenuTexts[i].color.b, mainMenuTexts[i].color.a + positive * Time.deltaTime);
+        for (int i = 0; i < creditMenuTexts.Length; i++) {
+            creditMenuTexts[i].color = new Color(creditMenuTexts[i].color.r, creditMenuTexts[i].color.g, creditMenuTexts[i].color.b, creditMenuTexts[i].color.a + positive * Time.deltaTime);
         }
-        for (int i = 0; i < mainMenuButtonImages.Length; i++) {
-            mainMenuButtonImages[i].color = new Color(mainMenuButtonImages[i].color.r, mainMenuButtonImages[i].color.g, mainMenuButtonImages[i].color.b, mainMenuButtonImages[i].color.a + positive * Time.deltaTime);
+        for (int i = 0; i < creditMenuButtonImages.Length; i++) {
+            creditMenuButtonImages[i].color = new Color(creditMenuButtonImages[i].color.r, creditMenuButtonImages[i].color.g, creditMenuButtonImages[i].color.b, creditMenuButtonImages[i].color.a + positive * Time.deltaTime);
         }
     }
+
 
     public void LoadScene(string myScene) {
         SceneManager.LoadScene(myScene);
