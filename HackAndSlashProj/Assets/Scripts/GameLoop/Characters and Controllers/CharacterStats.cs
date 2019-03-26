@@ -25,7 +25,10 @@ public class CharacterStats : MonoBehaviour {
         SettleStats();
         LateStartAlt();
     }
-
+    public virtual void StartingStamina() {
+        stamina = Mathf.RoundToInt(0.5f * stamina);
+        equivStamina = stamina;
+    }
     protected virtual void StartAlt() {
         //this has been left empty on purpose
     }

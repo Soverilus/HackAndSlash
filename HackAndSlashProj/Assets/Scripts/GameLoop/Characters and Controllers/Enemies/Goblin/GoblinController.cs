@@ -6,7 +6,7 @@ public class GoblinController : EnemyController {
 
     
     protected override void SetactionDC() {
-        actionDC = 0.05f;
+        actionDC = 0.01f;
         staminaAIActivate = 0.25f;
     }
     protected override void ActionAIModuleCalc(CharState targetState) {

@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class GameLoopController : MonoBehaviour {
     PlayerStats myCS;
     EnemyStats enemyCS;
+    CountdownToFight myAdvert;
     string loadScene;
     public int rewardTier;
     //Score keeping - currency and gold prize for winning
@@ -14,10 +15,31 @@ public class GameLoopController : MonoBehaviour {
     //win detection
     //Need an option to watch advertisements to gain gold button
     //buy Fragments with moneyyyyy
-
+    void SetAdvertisementRound() {
+        PlayerPrefs.SetInt("DispAdvert", Random.Range(5, 11) + PlayerPrefs.GetInt("GameRound"));
+    }
     public void Start() {
+        myAdvert = GameObject.FindGameObjectWithTag("Advertisement").GetComponent<CountdownToFight>();
         if (!PlayerPrefs.HasKey("GameRound")) {
             PlayerPrefs.SetInt("GameRound", 1);
+        }
+        //I am aware of the issue of using a playerpref as a method of checking whether or not the player has bought add-free version, however, for the purposes of the assignment, 
+        //I am NOT making an online service just for someone to be able to login to check this one thing.
+        if (!PlayerPrefs.HasKey("NoAdverts")) {
+            if (!PlayerPrefs.HasKey("DispAdvert")) {
+                SetAdvertisementRound();
+            }
+            if (PlayerPrefs.GetInt("DispAdvert") <= PlayerPrefs.GetInt("GameRound")) {
+                myAdvert.myTimeRemaining = 30f;
+                //Display Advert here.
+                SetAdvertisementRound();
+            }
+            else {
+                myAdvert.ExitCombatAdvert();
+            }
+        }
+        else {
+            myAdvert.ExitCombatAdvert();
         }
         if (GameObject.FindGameObjectWithTag("Player") && GameObject.FindGameObjectWithTag("Enemy")) {
             myCS = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
@@ -76,6 +98,7 @@ public class GameLoopController : MonoBehaviour {
     }
     public void OnDefeat() {
         PlayerPrefs.SetInt("GameRound", 1);
+        SetAdvertisementRound();
         PlayerPrefs.SetInt("PlayerHealth", myCS.GetMaxHealth());
         //determine final score - highscore
         //add total currency
