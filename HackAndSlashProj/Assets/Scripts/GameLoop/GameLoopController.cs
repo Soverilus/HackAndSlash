@@ -8,6 +8,7 @@ public class GameLoopController : MonoBehaviour {
     CountdownToFight myAdvert;
     string loadScene;
     public int rewardTier;
+    bool died = false;
     //Score keeping - currency and gold prize for winning
     //Maybe have a playerprefs controller?
     //User settings script?
@@ -16,7 +17,7 @@ public class GameLoopController : MonoBehaviour {
     //Need an option to watch advertisements to gain gold button
     //buy Fragments with moneyyyyy
     void SetAdvertisementRound() {
-        PlayerPrefs.SetInt("DispAdvert", Random.Range(5, 11) + PlayerPrefs.GetInt("GameRound"));
+        PlayerPrefs.SetInt("DispAdvert", Random.Range(3, 7) + PlayerPrefs.GetInt("GameRound"));
     }
     public void Start() {
         myAdvert = GameObject.FindGameObjectWithTag("Advertisement").GetComponent<CountdownToFight>();
@@ -59,6 +60,19 @@ public class GameLoopController : MonoBehaviour {
         }
     }
 
+    private void Update() {
+        if (Time.timeScale != 1f) {
+            if (died) {
+                Time.timeScale += 0.25f * Time.unscaledDeltaTime;
+            }
+            else {
+                Time.timeScale += 2f * Time.unscaledDeltaTime;
+            }
+            if (Time.timeScale >= 1f) {
+                Time.timeScale = 1f;
+            }
+        }
+    }
 
     public bool ItemExists(string myItemName) {
         bool myBool = false;
@@ -82,6 +96,7 @@ public class GameLoopController : MonoBehaviour {
     }
 
     public void OnVictory() {
+        died = true;
         AddGold();
         PlayerPrefs.SetInt("PlayerHealth", myCS.GetHealth());
         //determine score increase from enemy type and time and chance
@@ -97,6 +112,7 @@ public class GameLoopController : MonoBehaviour {
             Invoke("LoadScene", 3f);
     }
     public void OnDefeat() {
+        died = true;
         PlayerPrefs.SetInt("GameRound", 1);
         SetAdvertisementRound();
         PlayerPrefs.SetInt("PlayerHealth", myCS.GetMaxHealth());

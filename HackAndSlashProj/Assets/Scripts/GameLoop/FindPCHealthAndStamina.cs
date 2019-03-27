@@ -8,6 +8,9 @@ public class FindPCHealthAndStamina : MonoBehaviour
     public Slider mySta;
     public CharacterStats myCS;
 
+    float previousHPVal;
+    float previousStaVal;
+
     public bool player;
     void Start()
     {
@@ -21,9 +24,11 @@ public class FindPCHealthAndStamina : MonoBehaviour
         mySta.maxValue = myCS.GetMaxStamina();
     }
 
-    void Update()
-    {
-        myHP.value = myCS.GetHealth();
-        mySta.value = myCS.GetStamina();
+    void Update() {
+        previousHPVal = myHP.value;
+        previousStaVal = mySta.value;
+
+        myHP.value = Mathf.Lerp(previousHPVal, myCS.GetHealth(), 0.1f);
+        mySta.value = Mathf.Lerp(previousStaVal, myCS.GetStamina(), 0.1f);
     }
 }

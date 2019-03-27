@@ -5,12 +5,19 @@ using static GAV.GlobalCharacterVariables;
 [RequireComponent(typeof(CreatureController))]
 public class CharacterStats : MonoBehaviour {
     CharState myState = CharState.Normal;
+    CameraFeedback myCF;
+    protected int previousStamina;
+    public int PreviousStamina { get => previousStamina; }
+    protected int previousHealth;
+    public int PreviousHealth { get => previousHealth; }
     protected int maxHealth;
     [SerializeField]
     protected int health;
     protected int maxStamina;
+    public int MaxStamina { get => maxStamina; }
     [SerializeField]
     protected int stamina;
+    public int Stamina { get => stamina;}
     public float staminaRegMult = 10f;
     protected float equivStamina;
     protected float staminaRegTimer = 3f;
@@ -21,8 +28,10 @@ public class CharacterStats : MonoBehaviour {
 
     private void Start() {
         StartAlt();
+        myCF = Camera.main.GetComponent<CameraFeedback>();
         myCC = GetComponent<CreatureController>();
         SettleStats();
+        previousHealth = health;
         LateStartAlt();
     }
     public virtual void StartingStamina() {
@@ -51,6 +60,7 @@ public class CharacterStats : MonoBehaviour {
         myState = state;
     }
     protected virtual void Update() {
+        previousStamina = stamina;
         if (health > maxHealth) {
             health = maxHealth;
         }
@@ -114,10 +124,14 @@ public class CharacterStats : MonoBehaviour {
         equivStamina += Mathf.Abs(stamAmount);
     }
     public void Heal(int HPamount) {
+        previousHealth = health;
         health += Mathf.Abs(HPamount);
     }
     //myAttacker is for potential counter damage
     public virtual void DamageStamina(int damage) {
+        if (damage <= 0) {
+            return;
+        }
         stamina -= damage;
         equivStamina -= damage;
         if (equivStamina <= 0) {
@@ -134,7 +148,8 @@ public class CharacterStats : MonoBehaviour {
         }
         timer = 0;
     }
-    public void Damaged(int damage, GameObject myAttacker) {
+    public virtual void Damaged(int damage, GameObject myAttacker) {
+        previousHealth = health;
         switch (myState) {
             case CharState.Normal:
                 health -= Mathf.Abs(damage);
@@ -172,12 +187,20 @@ public class CharacterStats : MonoBehaviour {
                 health -= Mathf.Abs(damage);
                 break;
         }
+        CheckHealthAlt(damage);
         CheckHealth();
     }
 
     protected virtual void CheckHealth() {
         if (health <= 0) {
             myCC.myAnim.SetTrigger("Death");
+        }
+    }
+
+    protected void CheckHealthAlt(float magnitude) {
+        if (previousHealth != health) {
+            Time.timeScale = 0f;
+            myCF.SetShakeMagnitudeAndDuration(Mathf.Clamp01((magnitude)/10f), magnitude * 0.15f);
         }
     }
 
@@ -201,6 +224,7 @@ public class CharacterStats : MonoBehaviour {
     }
 
     public virtual void HealthPotion() {
+        previousHealth = health;
         Heal(maxHealth / 2);
     }
     public virtual void StaminaPotion() {

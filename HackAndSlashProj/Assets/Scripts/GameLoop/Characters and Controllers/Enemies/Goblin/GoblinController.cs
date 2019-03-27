@@ -48,9 +48,9 @@ public class GoblinController : EnemyController {
                 myActions[(int)Actions.HAttack] += 0;
                 myActions[(int)Actions.HDefend] += 0;
                 myActions[(int)Actions.HSpecial] += 0;
-                myActions[(int)Actions.LAttack] += 5;
+                myActions[(int)Actions.LAttack] += 10;
                 myActions[(int)Actions.LDefend] += 75;
-                myActions[(int)Actions.LSpecial] += 5;
+                myActions[(int)Actions.LSpecial] += 0;
                 myActions[(int)Actions.Nothing] += 5;
                 break;
 
@@ -58,9 +58,9 @@ public class GoblinController : EnemyController {
                 myActions[(int)Actions.HAttack] += 0;
                 myActions[(int)Actions.HDefend] += 0;
                 myActions[(int)Actions.HSpecial] += 0;
-                myActions[(int)Actions.LAttack] += 5;
+                myActions[(int)Actions.LAttack] += 10;
                 myActions[(int)Actions.LDefend] += 5;
-                myActions[(int)Actions.LSpecial] += 5;
+                myActions[(int)Actions.LSpecial] += 0;
                 myActions[(int)Actions.Nothing] += 75;
                 break;
 
@@ -78,9 +78,9 @@ public class GoblinController : EnemyController {
                 myActions[(int)Actions.HAttack] += 0;
                 myActions[(int)Actions.HDefend] += 0;
                 myActions[(int)Actions.HSpecial] += 0;
-                myActions[(int)Actions.LAttack] += 10;
+                myActions[(int)Actions.LAttack] += 25;
                 myActions[(int)Actions.LDefend] += -25;
-                myActions[(int)Actions.LSpecial] += 5;
+                myActions[(int)Actions.LSpecial] += 0;
                 myActions[(int)Actions.Nothing] += 75;
                 break;
 
@@ -98,6 +98,8 @@ public class GoblinController : EnemyController {
                 Debug.LogError("targetState is out of bounds!");
                 break;
         }
+        DoNothingStamina();
+        myActions[(int)Actions.Nothing] += Mathf.RoundToInt(chanceToDoNothing);
 
         myActions[(int)Actions.HAttack] += -101;
         myActions[(int)Actions.HDefend] += -101;
@@ -147,27 +149,27 @@ public class GoblinController : EnemyController {
                     break;
 
                 case CharState.HSpecial:
-                    stamDamage *= 50;
+                    stamDamage *= 25;
                     break;
 
                 case CharState.LAttack:
-
+                    stamDamage *= 0;
                     break;
 
                 case CharState.LDefend:
-
+                    stamDamage *= 0;
                     break;
 
                 case CharState.LSpecial:
-
+                    stamDamage *= 25;
                     break;
 
                 case CharState.Normal:
-
+                    stamDamage *= 0;
                     break;
 
                 case CharState.Stunned:
-
+                    stamDamage *= 0;
                     break;
 
                 default:

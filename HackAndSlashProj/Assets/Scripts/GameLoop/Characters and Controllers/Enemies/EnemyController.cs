@@ -8,6 +8,7 @@ public class EnemyController : CreatureController {
         Nothing, LAttack, HAttack, LDefend, HDefend, LSpecial, HSpecial,
         numEntries // we use this as marker for the number of entries
     }
+    protected float chanceToDoNothing;
     protected int[] myActions;
     protected float myTimer;
     protected float actionDC;
@@ -66,6 +67,12 @@ public class EnemyController : CreatureController {
             ActionAIModuleCalc(targetState);
         }
     }
+
+    protected virtual void DoNothingStamina() {
+        chanceToDoNothing = (Mathf.Pow(25 + ((float)myCS.Stamina / (float)myCS.MaxStamina)*100, 2) / -100 + 100);
+        //Debug.Log(chanceToDoNothing);
+    }
+
     protected virtual void ActionAIModuleCalc(CharState targetState) {
         myActions = ReturnActionArray();
         int myIndex = -101;
@@ -155,7 +162,8 @@ public class EnemyController : CreatureController {
                 //Debug.LogError("targetState is out of bounds!");
                 break;
         }
-
+        DoNothingStamina();
+        myActions[(int)Actions.Nothing] += Mathf.RoundToInt(chanceToDoNothing*100);
         for (int i = 0; i < (int)Actions.numEntries; i++) {
             if (myActions[i] > maxValue) {
                 maxValue = myActions[i];
@@ -188,16 +196,16 @@ public class EnemyController : CreatureController {
 
                 case (int)Actions.LDefend:
                     LightDefend();
-                   // Debug.Log(gameObject + " has performed a LightDefend");
+                    // Debug.Log(gameObject + " has performed a LightDefend");
                     break;
 
                 case (int)Actions.LSpecial:
                     LightSpecial();
-                   // Debug.Log(gameObject + " has performed a LightSpecial");
+                    // Debug.Log(gameObject + " has performed a LightSpecial");
                     break;
 
                 case (int)Actions.Nothing:
-                   // Debug.Log(gameObject + " is lazing about..!");
+                    // Debug.Log(gameObject + " is lazing about..!");
                     break;
 
                 default:
