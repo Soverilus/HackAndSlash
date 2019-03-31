@@ -13,6 +13,12 @@ public class AudioController : MonoBehaviour {
         CreateAudioSourceArray();
     }
 
+    private void Update() {
+        for (int i = 0; i < myAudioSource.Length; i++) {
+            myAudioSource[i].pitch = Time.timeScale;
+        }
+    }
+
     void CleanUpTestSources() {
         if (GetComponents<AudioSource>().Length < sources) {
             for (int i = 0; i < GetComponents<AudioSource>().Length; i++) {

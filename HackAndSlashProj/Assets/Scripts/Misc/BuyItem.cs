@@ -6,6 +6,7 @@ public class BuyItem : MonoBehaviour {
     [Header("DO NOT ENABLE UNLESS YOU WANT TO DELETE THE ITEM, FOR DEBUG PURPOSES __ONLY__")]
     public bool DELETEITEM = false;
     [Space(20f)]
+    public bool ENABLEFORPURCHASESHARDS = false;
     AudioController myAC;
     public string itemName;
     public bool buyWithGold;
@@ -52,7 +53,9 @@ public class BuyItem : MonoBehaviour {
 
     public void Purchase() {
         myAC.PlayAudioClip("Purchase");
-        PlayerPrefs.SetInt(itemName, PlayerPrefs.GetInt(itemName) + 1);
+        if (!ENABLEFORPURCHASESHARDS) {
+            PlayerPrefs.SetInt(itemName, PlayerPrefs.GetInt(itemName) + 1);
+        }
         if (buyWithGold) {
             PlayerPrefs.SetInt("Gold", PlayerPrefs.GetInt("Gold") - realCost);
         }

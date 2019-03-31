@@ -4,8 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class MenuController : MonoBehaviour {
+    float lerpTimer = 0.001f;
+    bool isStartingGame = false;
     bool fadeToShop = false;
     bool fadeToCredits = false;
+    Vector3 initialMenuScale;
     [Header("Main Menu Items")]
     public SpriteRenderer mainMenuArt;
     public Text[] mainMenuTexts;
@@ -59,6 +62,9 @@ public class MenuController : MonoBehaviour {
         }
         else {
             FadeToMain();
+        }
+        if (isStartingGame) {
+            StartGameUpdate();
         }
     }
 
@@ -161,6 +167,33 @@ public class MenuController : MonoBehaviour {
 
     public void LoadScene(string myScene) {
         SceneManager.LoadScene(myScene);
+    }
+
+    public void StartGame() {
+        for (int i = 0; i < mainMenuButtons.Length; i++) {
+            mainMenuButtons[i].gameObject.SetActive(false);
+        }
+        for (int i = 0; i < shopMenuButtons.Length; i++) {
+            shopMenuButtons[i].gameObject.SetActive(false);
+        }
+        for (int i = 0; i < creditMenuButtons.Length; i++) {
+            creditMenuButtons[i].gameObject.SetActive(false);
+        }
+        isStartingGame = true;
+        initialMenuScale = mainMenuArt.transform.localScale;
+    }
+    void StartGameUpdate() {
+        if (mainMenuArt.transform.localScale.magnitude >= initialMenuScale.magnitude * 10) {
+            mainMenuArt.transform.localScale = Vector3.Lerp(mainMenuArt.transform.localScale, new Vector3(17f, 17f, 17f), 1f);
+            Invoke("StartGameTrue", 2f);
+        }
+        else {
+            mainMenuArt.transform.localScale = Vector3.Lerp(mainMenuArt.transform.localScale, new Vector3(mainMenuArt.transform.localScale.x * 2, mainMenuArt.transform.localScale.y * 2, mainMenuArt.transform.localScale.z * 2), lerpTimer);
+            lerpTimer *= 1.25f;
+        }
+    }
+    void StartGameTrue() {
+        SceneManager.LoadScene("GoblinFight");
     }
 
     public void QuitApp() {

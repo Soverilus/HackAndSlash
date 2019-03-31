@@ -92,13 +92,13 @@ public class VagabondController : PlayerController {
     public override void LightSpecial() {
 
     }
-
+    */
     public override void StartHeavySpecial() {
-
+        myAnim.SetBool("HSpecial", true);
     }
-
+    /* 
+    
     public override void EndHeavySpecial() {
-
     }
 
     public override void Stagger() {

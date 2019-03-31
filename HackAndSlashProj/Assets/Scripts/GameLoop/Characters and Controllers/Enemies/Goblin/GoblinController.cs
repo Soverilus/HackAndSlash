@@ -28,9 +28,9 @@ public class GoblinController : EnemyController {
                 myActions[(int)Actions.HAttack] += 0;
                 myActions[(int)Actions.HDefend] += 0;
                 myActions[(int)Actions.HSpecial] += 0;
-                myActions[(int)Actions.LAttack] += 25;
+                myActions[(int)Actions.LAttack] += 50;
                 myActions[(int)Actions.LDefend] += -15;
-                myActions[(int)Actions.LSpecial] += 50;
+                myActions[(int)Actions.LSpecial] += 75;
                 myActions[(int)Actions.Nothing] += 5;
                 break;
 
@@ -48,7 +48,7 @@ public class GoblinController : EnemyController {
                 myActions[(int)Actions.HAttack] += 0;
                 myActions[(int)Actions.HDefend] += 0;
                 myActions[(int)Actions.HSpecial] += 0;
-                myActions[(int)Actions.LAttack] += 10;
+                myActions[(int)Actions.LAttack] += 25;
                 myActions[(int)Actions.LDefend] += 75;
                 myActions[(int)Actions.LSpecial] += 0;
                 myActions[(int)Actions.Nothing] += 5;
@@ -68,9 +68,9 @@ public class GoblinController : EnemyController {
                 myActions[(int)Actions.HAttack] += 0;
                 myActions[(int)Actions.HDefend] += 0;
                 myActions[(int)Actions.HSpecial] += 0;
-                myActions[(int)Actions.LAttack] += 50;
+                myActions[(int)Actions.LAttack] += 75;
                 myActions[(int)Actions.LDefend] += 0;
-                myActions[(int)Actions.LSpecial] += 75;
+                myActions[(int)Actions.LSpecial] += 10;
                 myActions[(int)Actions.Nothing] += 50;
                 break;
 
@@ -78,10 +78,10 @@ public class GoblinController : EnemyController {
                 myActions[(int)Actions.HAttack] += 0;
                 myActions[(int)Actions.HDefend] += 0;
                 myActions[(int)Actions.HSpecial] += 0;
-                myActions[(int)Actions.LAttack] += 25;
+                myActions[(int)Actions.LAttack] += 50;
                 myActions[(int)Actions.LDefend] += -25;
                 myActions[(int)Actions.LSpecial] += 0;
-                myActions[(int)Actions.Nothing] += 75;
+                myActions[(int)Actions.Nothing] += 90;
                 break;
 
             case CharState.Stunned:
@@ -126,7 +126,7 @@ public class GoblinController : EnemyController {
                     break;
 
                 case (int)Actions.Nothing:
-                    Debug.Log(gameObject.name + " is lazing about..!");
+                    //Debug.Log(gameObject.name + " is lazing about..!");
                     break;
 
                 default:
