@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 public class AudioController : MonoBehaviour {
@@ -50,8 +51,17 @@ public class AudioController : MonoBehaviour {
             return;
         }
         bool playSuccess = false;
+        int randNum = 0;
+        Regex numFinder = new Regex(@"(\d+)");
         foreach (AudioClip clip in clips) {
-            if (clip.name == clipToPlay) {
+            if (clip.name.Contains(clipToPlay) && numFinder.IsMatch(clip.name)) {
+                randNum++;
+            }
+        }
+
+        int trueRand = Random.Range(0, randNum) + 1;
+        foreach (AudioClip clip in clips) {
+            if (clip.name == clipToPlay + trueRand) {
                 aud.PlayOneShot(clip);
                 aud = null;
                 playSuccess = true;
@@ -59,7 +69,17 @@ public class AudioController : MonoBehaviour {
             }
         }
         if (!playSuccess) {
-            Debug.LogError("There was no clip in clips named " + clipToPlay);
+            foreach (AudioClip clip in clips) {
+                if (clip.name == clipToPlay) {
+                    aud.PlayOneShot(clip);
+                    aud = null;
+                    Debug.LogError("There was no clip in clips named " + clipToPlay + trueRand + ", however, there WAS a clip in clips named " + clipToPlay);
+                    Debug.LogWarning("Please change the name of the clip currently named " + clipToPlay + " to " + clipToPlay + "# where '#' = any int");
+                }
+                else {
+                    Debug.LogError("There was no clip in clips named " + clipToPlay + trueRand + ", nor a clip in clips named " + clipToPlay);
+                }
+            }
         }
     }
 }
