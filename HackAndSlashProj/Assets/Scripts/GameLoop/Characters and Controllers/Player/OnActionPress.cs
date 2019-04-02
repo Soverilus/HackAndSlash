@@ -6,7 +6,6 @@ using static GAV.GlobalActionVariables;
 [RequireComponent(typeof(PlayerController))]
 public class OnActionPress : MonoBehaviour {
     [SerializeField] PlayerController myPlayerController;
-    [SerializeField] bool isUsingAndroid = true;
     [SerializeField] bool isTesting = false;
     [Space(20f)]
     [Header("Misc Attributes")]
@@ -26,6 +25,12 @@ public class OnActionPress : MonoBehaviour {
     [SerializeField] bool isActing = false;
 
     void Start() {
+#if UNITY_ANDROID
+        Debug.Log("This is on android");
+#else
+        Debug.Log("This isn't android");
+#endif
+
         myPlayerController = GetComponent<PlayerController>(); ;
         if (!isTesting) {
             actTimer = Mathf.Abs(myActivationTime);
@@ -35,12 +40,15 @@ public class OnActionPress : MonoBehaviour {
     }
 
     void Update() {
-        if (isUsingAndroid) {
-            GetInpTouch();
-        }
-        else {
-            GetInpPress();
-        }
+#if UNITY_ANDROID
+        GetInpTouch();
+        Debug.Log("This is on android");
+#else
+        GetInpPress();
+        Debug.Log("This isn't android");
+#endif
+
+
         if (timerStarted) {
             timer -= Time.deltaTime;
             timeHeld += Time.deltaTime;
