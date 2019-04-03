@@ -199,9 +199,16 @@ public class CharacterStats : MonoBehaviour {
 
     protected void CheckHealthAlt(float magnitude) {
         if (previousHealth != health) {
+            if (health > 0) {
+                myCC.myAnim.SetTrigger("Hurt");
+            }
             Time.timeScale = 0f;
             myCF.SetShakeMagnitudeAndDuration(Mathf.Clamp01((magnitude)/10f), magnitude * 0.15f);
         }
+    }
+
+    public void DisableDeath() {
+        myCC.myAnim.speed = 0;
     }
 
     protected virtual void LAttackDamage(int damage, GameObject myAttacker) {

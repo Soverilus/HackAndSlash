@@ -183,12 +183,17 @@ public class MenuController : MonoBehaviour {
         initialMenuScale = mainMenuArt.transform.localScale;
     }
     void StartGameUpdate() {
-        if (mainMenuArt.transform.localScale.magnitude >= initialMenuScale.magnitude * 10) {
-            mainMenuArt.transform.localScale = Vector3.Lerp(mainMenuArt.transform.localScale, new Vector3(17f, 17f, 17f), 1f);
+        if (mainMenuArt.transform.localScale.magnitude >= initialMenuScale.magnitude * 30) {
+            mainMenuArt.transform.localScale = Vector3.Lerp(mainMenuArt.transform.localScale, new Vector3(32f, 32f, 32f), 1f);
             Invoke("StartGameTrue", 2f);
         }
         else {
-            mainMenuArt.transform.localScale = Vector3.Lerp(mainMenuArt.transform.localScale, new Vector3(mainMenuArt.transform.localScale.x * 2, mainMenuArt.transform.localScale.y * 2, mainMenuArt.transform.localScale.z * 2), lerpTimer);
+            Transform myTransform = mainMenuArt.transform.parent.gameObject.transform;
+            float myXPos = myTransform.position.x;
+            float myYPos = myTransform.position.y;
+            float myZPos = myTransform.position.z;
+            mainMenuArt.transform.localScale = Vector3.Lerp(mainMenuArt.transform.localScale, new Vector3(mainMenuArt.transform.localScale.x * 1.5f, mainMenuArt.transform.localScale.y * 1.5f, mainMenuArt.transform.localScale.z * 1.5f), lerpTimer);
+            myTransform.position = Vector3.Lerp(myTransform.position, new Vector3(myXPos + 0.00525f, myYPos + 1.5f, myZPos), lerpTimer); ;
             lerpTimer *= 1.25f;
         }
     }

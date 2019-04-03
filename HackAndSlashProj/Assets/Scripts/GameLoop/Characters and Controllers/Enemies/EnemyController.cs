@@ -13,6 +13,7 @@ public class EnemyController : CreatureController {
     protected float myTimer;
     protected float actionDC;
     bool AIEnabled = true;
+    float AIActiveTimer = 0f;
     protected float staminaAIActivate;
 
     protected virtual void SetactionDC() {
@@ -50,6 +51,7 @@ public class EnemyController : CreatureController {
                     ActionAIModule();
                     //Debug.Log(myTimer);
                     myTimer = 0f;
+                    AIActiveTimer += Time.deltaTime;
                 }
             }
             else targetCS = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>();
@@ -69,7 +71,12 @@ public class EnemyController : CreatureController {
     }
 
     protected virtual void DoNothingStamina() {
-        chanceToDoNothing = (Mathf.Pow(25 + ((float)myCS.Stamina / (float)myCS.MaxStamina)*100, 2) / -100 + 100);
+        if (AIActiveTimer >= 0.5f) {
+            chanceToDoNothing = (Mathf.Pow(25 + ((float)myCS.Stamina / (float)myCS.MaxStamina) * 100, 2) / -100 + 100);
+        }
+        else {
+            chanceToDoNothing = 200f;
+        }
         //Debug.Log(chanceToDoNothing);
     }
 

@@ -31,7 +31,7 @@ public class GameLoopController : MonoBehaviour {
                 SetAdvertisementRound();
             }
             if (PlayerPrefs.GetInt("DispAdvert") <= PlayerPrefs.GetInt("GameRound")) {
-                myAdvert.myTimeRemaining = 30f;
+                myAdvert.myTimeRemaining = 5f;
                 //Display Advert here.
                 SetAdvertisementRound();
             }

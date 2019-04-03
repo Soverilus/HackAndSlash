@@ -21,7 +21,7 @@ public class GoblinController : EnemyController {
                 myActions[(int)Actions.LAttack] += 5;
                 myActions[(int)Actions.LDefend] += 75;
                 myActions[(int)Actions.LSpecial] += 5;
-                myActions[(int)Actions.Nothing] += 5;
+                myActions[(int)Actions.Nothing] += 10;
                 break;
 
             case CharState.HDefend:
@@ -31,7 +31,7 @@ public class GoblinController : EnemyController {
                 myActions[(int)Actions.LAttack] += 50;
                 myActions[(int)Actions.LDefend] += -15;
                 myActions[(int)Actions.LSpecial] += 75;
-                myActions[(int)Actions.Nothing] += 5;
+                myActions[(int)Actions.Nothing] += 20;
                 break;
 
             case CharState.HSpecial:
@@ -41,7 +41,7 @@ public class GoblinController : EnemyController {
                 myActions[(int)Actions.LAttack] += 50;
                 myActions[(int)Actions.LDefend] += 0;
                 myActions[(int)Actions.LSpecial] += 25;
-                myActions[(int)Actions.Nothing] += 5;
+                myActions[(int)Actions.Nothing] += 10;
                 break;
 
             case CharState.LAttack:
@@ -51,7 +51,7 @@ public class GoblinController : EnemyController {
                 myActions[(int)Actions.LAttack] += 25;
                 myActions[(int)Actions.LDefend] += 75;
                 myActions[(int)Actions.LSpecial] += 0;
-                myActions[(int)Actions.Nothing] += 5;
+                myActions[(int)Actions.Nothing] += 10;
                 break;
 
             case CharState.LDefend:
@@ -91,7 +91,7 @@ public class GoblinController : EnemyController {
                 myActions[(int)Actions.LAttack] += 50;
                 myActions[(int)Actions.LDefend] += 0;
                 myActions[(int)Actions.LSpecial] += 10;
-                myActions[(int)Actions.Nothing] += -25;
+                myActions[(int)Actions.Nothing] += 10;
                 break;
 
             default:
@@ -145,7 +145,7 @@ public class GoblinController : EnemyController {
                     break;
 
                 case CharState.HDefend:
-                    stamDamage *= 50;
+                    stamDamage *= 5;
                     break;
 
                 case CharState.HSpecial:
