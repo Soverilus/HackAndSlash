@@ -179,4 +179,21 @@ public class CreatureController : MonoBehaviour {
             myAnim.ResetTrigger(myTriggers[i]);
         }
     }
+
+    public void CancelAllAnimatorParameters() {
+        foreach (AnimatorControllerParameter parameter in myAnim.parameters) {
+            if (parameter.type == AnimatorControllerParameterType.Bool) {
+                myAnim.SetBool(parameter.name, false);
+            }
+            if (parameter.type == AnimatorControllerParameterType.Trigger) {
+                myAnim.ResetTrigger(parameter.name);
+            }
+            if (parameter.type == AnimatorControllerParameterType.Int) {
+                myAnim.SetInteger(parameter.name, 0);
+            }
+            if (parameter.type == AnimatorControllerParameterType.Float) {
+                myAnim.SetFloat(parameter.name, 0f);
+            }
+        }
+    }
 }
