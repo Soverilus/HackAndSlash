@@ -5,7 +5,6 @@ using static GAV.GlobalCharacterVariables;
 [RequireComponent(typeof(CreatureController))]
 public class CharacterStats : MonoBehaviour {
     CharState myState = CharState.Normal;
-    Animator bgAnimator;
     CameraFeedback myCF;
     protected int previousStamina;
     public int PreviousStamina { get => previousStamina; }
@@ -29,7 +28,6 @@ public class CharacterStats : MonoBehaviour {
 
     private void Start() {
         StartAlt();
-        bgAnimator = GameObject.FindGameObjectWithTag("Background").GetComponent<Animator>();
         myCF = Camera.main.GetComponent<CameraFeedback>();
         myCC = GetComponent<CreatureController>();
         SettleStats();
@@ -204,7 +202,6 @@ public class CharacterStats : MonoBehaviour {
             if (health > 0) {
                 myCC.myAnim.SetTrigger("Hurt");
             }
-            bgAnimator.SetTrigger("Whiff");
             Time.timeScale = 0f;
             myCF.SetShakeMagnitudeAndDuration(Mathf.Clamp01((magnitude)/10f), magnitude * 0.15f);
         }

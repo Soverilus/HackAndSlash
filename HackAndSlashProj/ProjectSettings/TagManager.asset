@@ -7,7 +7,6 @@ TagManager:
   - Enemy
   - AudioController
   - Advertisement
-  - Background
   layers:
   - Default
   - TransparentFX
@@ -42,17 +41,11 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Background
-    uniqueID: 2936623507
-    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Enemy
-    uniqueID: 3612307795
-    locked: 0
-  - name: Player
-    uniqueID: 410768817
+  - name: Background
+    uniqueID: 2936623507
     locked: 0
   - name: Foreground
     uniqueID: 2306864385
