@@ -29,6 +29,7 @@ public class VagabondStats : PlayerStats {
 
     protected override void HDefendDamage(int damage, GameObject myAttacker) {
         equivStamina -= damage;
+        myAC.PlayAudioClip("ShieldHit1", false);
     }
 
     protected override void HSpecialDamage(int damage, GameObject myAttacker) {

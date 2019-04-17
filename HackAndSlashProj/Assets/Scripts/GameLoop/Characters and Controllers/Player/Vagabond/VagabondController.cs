@@ -46,12 +46,10 @@ public class VagabondController : PlayerController {
         }
         targetCS.DamageStamina(stamDamage);
     }
-    /*public override void HeavyChargeInc() {
-        Mathf.Clamp(chargeLv += 1, 1, 5);
-        if (chargeLv >= 5) {
-            myAnim.SetBool("HAttack", false);
-        }
-    }
+    public override void HeavyChargeInc() {
+        base.HeavyChargeInc();
+        myCS.mySPR.color = Color.blue;
+    }/*
 
     public override void DamageTarget(int zeroForLight) {
         if (zeroForLight != 0) {

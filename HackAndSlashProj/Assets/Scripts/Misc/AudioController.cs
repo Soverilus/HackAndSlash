@@ -37,7 +37,7 @@ public class AudioController : MonoBehaviour {
         }
     }
 
-    public void PlayAudioClip(string clipToPlay) {
+    public void PlayAudioClip(string clipToPlay, bool isMultiple = true) {
         bool hasAudioSource = false;
         for (int i = 0; i < myAudioSource.Length; i++) {
             if (!myAudioSource[i].isPlaying) {
@@ -51,21 +51,33 @@ public class AudioController : MonoBehaviour {
             return;
         }
         bool playSuccess = false;
-        int randNum = 0;
-        Regex numFinder = new Regex(@"(\d+)");
-        foreach (AudioClip clip in clips) {
-            if (clip.name.Contains(clipToPlay) && numFinder.IsMatch(clip.name)) {
-                randNum++;
+        if (isMultiple) {
+            int randNum = 0;
+            Regex numFinder = new Regex(@"(\d+)");
+            foreach (AudioClip clip in clips) {
+                if (clip.name.Contains(clipToPlay) && numFinder.IsMatch(clip.name)) {
+                    randNum++;
+                }
+            }
+
+            int trueRand = Random.Range(0, randNum) + 1;
+            foreach (AudioClip clip in clips) {
+                if (clip.name == clipToPlay + trueRand) {
+                    aud.PlayOneShot(clip);
+                    aud = null;
+                    playSuccess = true;
+                    break;
+                }
             }
         }
-
-        int trueRand = Random.Range(0, randNum) + 1;
-        foreach (AudioClip clip in clips) {
-            if (clip.name == clipToPlay + trueRand) {
-                aud.PlayOneShot(clip);
-                aud = null;
-                playSuccess = true;
-                break;
+        else {
+            foreach (AudioClip clip in clips) {
+                if (clip.name.Contains(clipToPlay)) {
+                    aud.PlayOneShot(clip);
+                    aud = null;
+                    playSuccess = true;
+                    break;
+                }
             }
         }
         if (!playSuccess) {
@@ -74,7 +86,7 @@ public class AudioController : MonoBehaviour {
                     aud.PlayOneShot(clip);
                     aud = null;
                     Debug.LogError("There was no clip in clips named " + clipToPlay + trueRand + ", however, there WAS a clip in clips named " + clipToPlay);
-                    Debug.LogWarning("Please change the name of the clip currently named " + clipToPlay + " to " + clipToPlay + "# where '#' = any int");
+                    Debug.LogWarning("Please change the name of the clip currently named " + clipToPlay + " to '" + clipToPlay + "#' where '#' = any int");
                 }
                 else {
                     Debug.LogError("There was no clip in clips named " + clipToPlay + trueRand + ", nor a clip in clips named " + clipToPlay);

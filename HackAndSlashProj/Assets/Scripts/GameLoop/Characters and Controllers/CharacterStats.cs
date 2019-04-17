@@ -5,7 +5,11 @@ using static GAV.GlobalCharacterVariables;
 [RequireComponent(typeof(CreatureController))]
 public class CharacterStats : MonoBehaviour {
     CharState myState = CharState.Normal;
+    bool istrueDead = false;
     CameraFeedback myCF;
+    public SpriteRenderer mySPR;
+    Color mySPRColor;
+    public AudioController myAC;
     protected int previousStamina;
     public int PreviousStamina { get => previousStamina; }
     protected int previousHealth;
@@ -17,7 +21,7 @@ public class CharacterStats : MonoBehaviour {
     public int MaxStamina { get => maxStamina; }
     [SerializeField]
     protected int stamina;
-    public int Stamina { get => stamina;}
+    public int Stamina { get => stamina; }
     public float staminaRegMult = 10f;
     protected float equivStamina;
     protected float staminaRegTimer = 3f;
@@ -28,6 +32,8 @@ public class CharacterStats : MonoBehaviour {
 
     private void Start() {
         StartAlt();
+        mySPR = GetComponent<SpriteRenderer>();
+        mySPRColor = mySPR.color;
         myCF = Camera.main.GetComponent<CameraFeedback>();
         myCC = GetComponent<CreatureController>();
         SettleStats();
@@ -60,6 +66,7 @@ public class CharacterStats : MonoBehaviour {
         myState = state;
     }
     protected virtual void Update() {
+            ColorChange();
         previousStamina = stamina;
         if (health > maxHealth) {
             health = maxHealth;
@@ -80,6 +87,12 @@ public class CharacterStats : MonoBehaviour {
     }
     public CharState GetState() {
         return myState;
+    }
+
+    void ColorChange() {
+        if (mySPRColor != mySPR.color) {
+            mySPR.color = Color.Lerp(mySPR.color, mySPRColor, 0.05f);
+        }
     }
 
     void SettleStats() {
@@ -200,15 +213,22 @@ public class CharacterStats : MonoBehaviour {
     protected void CheckHealthAlt(float magnitude) {
         if (previousHealth != health) {
             if (health > 0) {
+                mySPR.color = Color.red;
                 myCC.myAnim.SetTrigger("Hurt");
             }
-            Time.timeScale = 0f;
-            myCF.SetShakeMagnitudeAndDuration(Mathf.Clamp01((magnitude)/10f), magnitude * 0.15f);
+            else {
+                mySPRColor = new Color(0f, 0f, 0f, 0f);
+            }
+            if (!istrueDead) {
+                Time.timeScale = 0f;
+                myCF.SetShakeMagnitudeAndDuration(Mathf.Clamp01((magnitude) / 10f), magnitude * 0.15f);
+            }
         }
     }
 
     public void DisableDeath() {
         myCC.myAnim.speed = 0;
+        istrueDead = true;
     }
 
     protected virtual void LAttackDamage(int damage, GameObject myAttacker) {
