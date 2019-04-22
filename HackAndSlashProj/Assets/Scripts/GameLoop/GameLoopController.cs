@@ -9,13 +9,6 @@ public class GameLoopController : MonoBehaviour {
     string loadScene;
     public int rewardTier;
     bool died = false;
-    //Score keeping - currency and gold prize for winning
-    //Maybe have a playerprefs controller?
-    //User settings script?
-    //money script..?
-    //win detection
-    //Need an option to watch advertisements to gain gold button
-    //buy Fragments with moneyyyyy
     void SetAdvertisementRound() {
         PlayerPrefs.SetInt("DispAdvert", Random.Range(3, 7) + PlayerPrefs.GetInt("GameRound"));
     }
@@ -99,9 +92,6 @@ public class GameLoopController : MonoBehaviour {
         died = true;
         AddGold();
         PlayerPrefs.SetInt("PlayerHealth", myCS.GetHealth());
-        //determine score increase from enemy type and time and chance
-        //chance to add currency based on round count
-        //chance for item reward based on round count
         if (PlayerPrefs.HasKey("GameRound")) {
             PlayerPrefs.SetInt("GameRound", PlayerPrefs.GetInt("GameRound") + 1);
         }
@@ -116,9 +106,6 @@ public class GameLoopController : MonoBehaviour {
         PlayerPrefs.SetInt("GameRound", 1);
         SetAdvertisementRound();
         PlayerPrefs.SetInt("PlayerHealth", myCS.GetMaxHealth());
-        //determine final score - highscore
-        //add total currency
-        //total scores
         loadScene = "Menu";
         Invoke("LoadScene", 3f);
     }

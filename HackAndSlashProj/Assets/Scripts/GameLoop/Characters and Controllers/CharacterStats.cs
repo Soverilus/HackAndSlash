@@ -4,11 +4,11 @@ using UnityEngine;
 using static GAV.GlobalCharacterVariables;
 [RequireComponent(typeof(CreatureController))]
 public class CharacterStats : MonoBehaviour {
-    CharState myState = CharState.Normal;
-    bool istrueDead = false;
-    CameraFeedback myCF;
+    protected CharState myState = CharState.Normal;
+    protected bool istrueDead = false;
+    protected CameraFeedback myCF;
     public SpriteRenderer mySPR;
-    Color mySPRColor;
+    protected Color mySPRColor;
     public AudioController myAC;
     protected int previousStamina;
     public int PreviousStamina { get => previousStamina; }
@@ -25,13 +25,15 @@ public class CharacterStats : MonoBehaviour {
     public float staminaRegMult = 10f;
     protected float equivStamina;
     protected float staminaRegTimer = 3f;
-    float timer;
+    protected float timer;
     public int baseDamage;
     protected CreatureController myCC;
     public bool isDead = false;
+    protected bool hasStateChanged = false;
 
     private void Start() {
         StartAlt();
+        myAC = GameObject.FindGameObjectWithTag("AudioController").GetComponent<AudioController>();
         mySPR = GetComponent<SpriteRenderer>();
         mySPRColor = mySPR.color;
         myCF = Camera.main.GetComponent<CameraFeedback>();
@@ -57,16 +59,53 @@ public class CharacterStats : MonoBehaviour {
     }
     public void EnumFromString(string myString) {
         CharState newState = (CharState)System.Enum.Parse(typeof(CharState), myString);
-        myState = newState;
+        ChangeState(newState);
     }
     public void ResetState() {
         myState = CharState.Normal;
     }
     public void ChangeState(CharState state) {
         myState = state;
+        hasStateChanged = true;
     }
+
+    protected virtual void OnStateChange() {
+        switch (myState) {
+            case CharState.Normal:
+                break;
+
+            case CharState.Stunned:
+                break;
+
+            case CharState.LAttack:
+                break;
+
+            case CharState.HAttack:
+                break;
+
+            case CharState.LDefend:
+                break;
+
+            case CharState.HDefend:
+                break;
+
+            case CharState.LSpecial:
+                break;
+
+            case CharState.HSpecial:
+                break;
+
+            default:
+                break;
+        }
+        hasStateChanged = false;
+    }
+
     protected virtual void Update() {
             ColorChange();
+        if (hasStateChanged) {
+            OnStateChange();
+        }
         previousStamina = stamina;
         if (health > maxHealth) {
             health = maxHealth;

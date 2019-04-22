@@ -166,7 +166,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: e238fce54350eaf43984a5e12e94c64b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -672,7 +672,37 @@ PrefabInstance:
     - target: {fileID: 6008371851623659863, guid: f221e2856f64c5c41a4ed50657245b01,
         type: 3}
       propertyPath: clips.Array.size
-      value: 0
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6008371851623659863, guid: f221e2856f64c5c41a4ed50657245b01,
+        type: 3}
+      propertyPath: clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 30bdf34f52cb8994cb319fa9b17d4c21, type: 3}
+    - target: {fileID: 6008371851623659863, guid: f221e2856f64c5c41a4ed50657245b01,
+        type: 3}
+      propertyPath: clips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 4aca0f62496cf034084bf67da02651eb, type: 3}
+    - target: {fileID: 6008371851623659863, guid: f221e2856f64c5c41a4ed50657245b01,
+        type: 3}
+      propertyPath: clips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: f0abc8f113aacff488263764ced6c427, type: 3}
+    - target: {fileID: 6008371851623659863, guid: f221e2856f64c5c41a4ed50657245b01,
+        type: 3}
+      propertyPath: clips.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 805c36e3006ba8242aaa280bd98f08da, type: 3}
+    - target: {fileID: 6008371851623659863, guid: f221e2856f64c5c41a4ed50657245b01,
+        type: 3}
+      propertyPath: clips.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 414d57392835e4642bd372e29c8a3ae5, type: 3}
+    - target: {fileID: 6008371851623659863, guid: f221e2856f64c5c41a4ed50657245b01,
+        type: 3}
+      propertyPath: sources
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f221e2856f64c5c41a4ed50657245b01, type: 3}

@@ -39,6 +39,7 @@ public class AudioController : MonoBehaviour {
 
     public void PlayAudioClip(string clipToPlay, bool isMultiple = true) {
         bool hasAudioSource = false;
+        int trueRand = 0;
         for (int i = 0; i < myAudioSource.Length; i++) {
             if (!myAudioSource[i].isPlaying) {
                 aud = myAudioSource[i];
@@ -60,7 +61,7 @@ public class AudioController : MonoBehaviour {
                 }
             }
 
-            int trueRand = Random.Range(0, randNum) + 1;
+            trueRand = Random.Range(0, randNum) + 1;
             foreach (AudioClip clip in clips) {
                 if (clip.name == clipToPlay + trueRand) {
                     aud.PlayOneShot(clip);

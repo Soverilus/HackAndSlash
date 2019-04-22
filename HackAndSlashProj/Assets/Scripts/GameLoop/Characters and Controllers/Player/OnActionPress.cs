@@ -42,7 +42,7 @@ public class OnActionPress : MonoBehaviour {
     void Update() {
 #if UNITY_ANDROID
         GetInpTouch();
-        Debug.Log("This is on android");
+        Debug.Log("This is android");
 #else
         GetInpPress();
         Debug.Log("This isn't android");
