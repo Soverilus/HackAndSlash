@@ -12,6 +12,7 @@ public class EnemyStats : CharacterStats
                 SetRewardTier();
             }
             MiscOnDeath();
+            mySPRColor = new Color(0f, 0f, 0f, 0f);
             myCC.myAnim.SetTrigger("Death");
             if (!isDead) {
                 myGLC.OnVictory();

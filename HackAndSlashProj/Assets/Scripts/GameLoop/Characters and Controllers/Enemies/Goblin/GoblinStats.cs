@@ -63,5 +63,6 @@ public class GoblinStats : EnemyStats {
 
     protected override void LSpecialDamage(int damage, GameObject myAttacker) {
         health -= damage * 2;
+        myAC.PlayAudioClip("HIT");
     }
 }

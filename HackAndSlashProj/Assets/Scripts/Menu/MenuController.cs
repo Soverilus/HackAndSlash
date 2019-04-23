@@ -9,6 +9,7 @@ public class MenuController : MonoBehaviour {
     bool fadeToShop = false;
     bool fadeToCredits = false;
     Vector3 initialMenuScale;
+    bool fadeAtAll = true;
     [Header("Main Menu Items")]
     public SpriteRenderer mainMenuArt;
     public Text[] mainMenuTexts;
@@ -54,14 +55,16 @@ public class MenuController : MonoBehaviour {
     }
 
     private void Update() {
-        if (fadeToShop) {
-            FadeToShop();
-        }
-        else if (fadeToCredits) {
-            FadeToCredits();
-        }
-        else {
-            FadeToMain();
+        if (fadeAtAll) {
+            if (fadeToShop) {
+                FadeToShop();
+            }
+            else if (fadeToCredits) {
+                FadeToCredits();
+            }
+            else {
+                FadeToMain();
+            }
         }
         if (isStartingGame) {
             StartGameUpdate();
@@ -179,6 +182,8 @@ public class MenuController : MonoBehaviour {
         for (int i = 0; i < creditMenuButtons.Length; i++) {
             creditMenuButtons[i].gameObject.SetActive(false);
         }
+        mainMenuArt.color = new Color(mainMenuArt.color.r, mainMenuArt.color.g, mainMenuArt.color.b, 1f);
+        fadeAtAll = false;
         isStartingGame = true;
         initialMenuScale = mainMenuArt.transform.localScale;
     }
@@ -193,7 +198,8 @@ public class MenuController : MonoBehaviour {
             float myYPos = myTransform.position.y;
             float myZPos = myTransform.position.z;
             mainMenuArt.transform.localScale = Vector3.Lerp(mainMenuArt.transform.localScale, new Vector3(mainMenuArt.transform.localScale.x * 1.5f, mainMenuArt.transform.localScale.y * 1.5f, mainMenuArt.transform.localScale.z * 1.5f), lerpTimer);
-            myTransform.position = Vector3.Lerp(myTransform.position, new Vector3(myXPos + 0.00525f, myYPos + 1.5f, myZPos), lerpTimer); ;
+            myTransform.position = Vector3.Lerp(myTransform.position, new Vector3(myXPos + 0.00525f, myYPos + 1.5f, myZPos), lerpTimer);
+            mainMenuArt.color = Color.Lerp(mainMenuArt.color, new Color(mainMenuArt.color.r, mainMenuArt.color.g, mainMenuArt.color.b, 0f), lerpTimer);
             lerpTimer *= 1.25f;
         }
     }

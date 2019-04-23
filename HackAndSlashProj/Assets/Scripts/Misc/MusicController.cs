@@ -7,6 +7,10 @@ public class MusicController : MonoBehaviour
     float timer = 0f;
     AudioSource myAud;
     float originalVolume;
+
+    [SerializeField]
+    AnimationCurve curve;
+
     void Start()
     {
         myAud = GetComponent<AudioSource>();
@@ -24,6 +28,6 @@ public class MusicController : MonoBehaviour
             myAud.volume = originalVolume;
             timer = 0f;
         }
-        myAud.pitch = Time.timeScale;
+        myAud.pitch = curve.Evaluate(Time.timeScale);
     }
 }

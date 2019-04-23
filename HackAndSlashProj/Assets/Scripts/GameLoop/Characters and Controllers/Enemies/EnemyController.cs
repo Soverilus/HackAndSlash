@@ -71,8 +71,8 @@ public class EnemyController : CreatureController {
     }
 
     protected virtual void DoNothingStamina() {
-        if (AIActiveTimer >= 0.5f) {
-            chanceToDoNothing = (Mathf.Pow(25 + ((float)myCS.Stamina / (float)myCS.MaxStamina) * 100, 2) / -100 + 100);
+        if (AIActiveTimer >= 0.25f) {
+            chanceToDoNothing = (Mathf.Pow(((float)myCS.Stamina / (float)myCS.MaxStamina), 2) * -500) + 500;
         }
         else {
             chanceToDoNothing = 200f;

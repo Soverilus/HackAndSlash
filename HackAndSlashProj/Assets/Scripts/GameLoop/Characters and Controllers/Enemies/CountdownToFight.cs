@@ -21,6 +21,9 @@ public class CountdownToFight : MonoBehaviour {
         myPC.enabled = false;
     }
     void Update() {
+        if (PlayerPrefs.HasKey("NoAdverts")) {
+            ExitCombatAdvert();
+        }
         myTimeRemaining -= Time.deltaTime;
         myText.text = myTimeRemaining.ToString("F0");
         if (myTimeRemaining <= 0) {

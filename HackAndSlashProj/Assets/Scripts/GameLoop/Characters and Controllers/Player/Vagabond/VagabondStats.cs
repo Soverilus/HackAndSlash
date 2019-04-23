@@ -70,9 +70,11 @@ public class VagabondStats : PlayerStats {
 
     protected override void HSpecialDamage(int damage, GameObject myAttacker) {
         health -= damage * 2;
+        myAC.PlayAudioClip("HIT");
     }
 
     protected override void LSpecialDamage(int damage, GameObject myAttacker) {
         health -= damage * 2;
+        myAC.PlayAudioClip("HIT");
     }
 }

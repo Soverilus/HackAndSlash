@@ -69,6 +69,11 @@ public class GameLoopController : MonoBehaviour {
 
     public bool ItemExists(string myItemName) {
         bool myBool = false;
+        if (PlayerPrefs.HasKey("Inf" + myItemName)) {
+            if (PlayerPrefs.GetInt("Inf" + myItemName) > 0) {
+                myBool = true;
+            }
+        }
         if (PlayerPrefs.HasKey(myItemName)) {
             if (PlayerPrefs.GetInt(myItemName) > 0) {
                 myBool = true;

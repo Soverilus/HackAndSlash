@@ -30,9 +30,11 @@ public class CharacterStats : MonoBehaviour {
     protected CreatureController myCC;
     public bool isDead = false;
     protected bool hasStateChanged = false;
+    Animator bgAnimator;
 
     private void Start() {
         StartAlt();
+        bgAnimator = GameObject.FindGameObjectWithTag("Background").GetComponent<Animator>();
         myAC = GameObject.FindGameObjectWithTag("AudioController").GetComponent<AudioController>();
         mySPR = GetComponent<SpriteRenderer>();
         mySPRColor = mySPR.color;
@@ -184,6 +186,7 @@ public class CharacterStats : MonoBehaviour {
         if (damage <= 0) {
             return;
         }
+        bgAnimator.SetTrigger("HIT");
         stamina -= damage;
         equivStamina -= damage;
         if (equivStamina <= 0) {
@@ -205,10 +208,11 @@ public class CharacterStats : MonoBehaviour {
         switch (myState) {
             case CharState.Normal:
                 health -= Mathf.Abs(damage);
+                NormalDamage(damage, myAttacker);
                 break;
 
             case CharState.Stunned:
-                health -= Mathf.Abs(damage * 3);
+                StunnedDamage(damage, myAttacker);
                 break;
 
             case CharState.LAttack:
@@ -246,17 +250,19 @@ public class CharacterStats : MonoBehaviour {
     protected virtual void CheckHealth() {
         if (health <= 0) {
             myCC.myAnim.SetTrigger("Death");
+            mySPRColor = new Color(0f, 0f, 0f, 0f);
         }
     }
 
     protected void CheckHealthAlt(float magnitude) {
         if (previousHealth != health) {
             if (health > 0) {
+                bgAnimator.SetTrigger("HIT");
                 mySPR.color = Color.red;
                 myCC.myAnim.SetTrigger("Hurt");
             }
             else {
-                mySPRColor = new Color(0f, 0f, 0f, 0f);
+                bgAnimator.SetTrigger("HIT");
             }
             if (!istrueDead) {
                 Time.timeScale = 0f;
@@ -272,31 +278,49 @@ public class CharacterStats : MonoBehaviour {
 
     protected virtual void LAttackDamage(int damage, GameObject myAttacker) {
         health -= Mathf.Abs(damage);
+        myAC.PlayAudioClip("HIT");
     }
     protected virtual void HAttackDamage(int damage, GameObject myAttacker) {
         health -= Mathf.Abs(damage);
+        myAC.PlayAudioClip("HIT");
     }
     protected virtual void LDefendDamage(int damage, GameObject myAttacker) {
         health -= Mathf.Abs(damage);
+        myAC.PlayAudioClip("HIT");
     }
     protected virtual void HDefendDamage(int damage, GameObject myAttacker) {
         health -= Mathf.Abs(damage);
+        myAC.PlayAudioClip("HIT");
     }
     protected virtual void LSpecialDamage(int damage, GameObject myAttacker) {
         health -= Mathf.Abs(damage);
+        myAC.PlayAudioClip("HIT");
     }
     protected virtual void HSpecialDamage(int damage, GameObject myAttacker) {
         health -= Mathf.Abs(damage);
+        myAC.PlayAudioClip("HIT");
+    }
+    protected virtual void NormalDamage(int damage, GameObject myAttacker) {
+        health -= Mathf.Abs(damage);
+        myAC.PlayAudioClip("HIT");
+    }
+    protected virtual void StunnedDamage(int damage, GameObject myAttacker) {
+        health -= 3*Mathf.Abs(damage);
+        myAC.PlayAudioClip("HIT");
+        myAC.PlayAudioClip("HIT");
     }
 
     public virtual void HealthPotion() {
         previousHealth = health;
         Heal(maxHealth / 2);
+        myAC.PlayAudioClip("POTION", false);
     }
     public virtual void StaminaPotion() {
         HealStam(maxStamina);
+        myAC.PlayAudioClip("POTION", false);
     }
     public virtual void PowerPotion() {
         baseDamage += 10;
+        myAC.PlayAudioClip("POTION", false);
     }
 }

@@ -178,9 +178,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
+  m_Sprite: {fileID: 21300000, guid: 2fe44c6c466bfa746a14a63e8095794d, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -252,6 +252,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6983f7382d5e7d846a0560c0903b74ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mySprites:
+  - {fileID: 21300000, guid: 2fe44c6c466bfa746a14a63e8095794d, type: 3}
+  - {fileID: 21300000, guid: 00cc0b0afa4b0864cbc4adc6ad2d01c9, type: 3}
   itemName: StaminaPotion
   potionAmount: 0
 --- !u!1 &741226016689293615
@@ -626,9 +629,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
+  m_Sprite: {fileID: 21300000, guid: 43130f5c5cfb1a940b032d3aa9748d7a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -689,6 +692,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6983f7382d5e7d846a0560c0903b74ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mySprites:
+  - {fileID: 21300000, guid: 43130f5c5cfb1a940b032d3aa9748d7a, type: 3}
+  - {fileID: 21300000, guid: 31da95d37a37cd9439fee9268726e65c, type: 3}
   itemName: RevivePotion
   potionAmount: 0
 --- !u!1 &1964970191780303902
@@ -759,9 +765,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
+  m_Sprite: {fileID: 21300000, guid: ac6318990407c8f49a3aa0af5b182b60, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -833,6 +839,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6983f7382d5e7d846a0560c0903b74ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mySprites:
+  - {fileID: 21300000, guid: ac6318990407c8f49a3aa0af5b182b60, type: 3}
+  - {fileID: 21300000, guid: 82d5fee256e9dfb4e82501f8226a58b4, type: 3}
   itemName: PowerPotion
   potionAmount: 0
 --- !u!1 &2061615973526126430
@@ -1786,7 +1795,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6960013479310498130
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1805,7 +1814,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000061035156, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -24.799927, y: -19.799988}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5041497045871830566
@@ -2925,9 +2934,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
+  m_Sprite: {fileID: 21300000, guid: 94bfd1dc5f659614e9dd14c047044c49, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -2999,5 +3008,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6983f7382d5e7d846a0560c0903b74ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mySprites:
+  - {fileID: 21300000, guid: 94bfd1dc5f659614e9dd14c047044c49, type: 3}
+  - {fileID: 21300000, guid: d9e0848f8c731764286b92cca4ed0477, type: 3}
   itemName: HealthPotion
   potionAmount: 0

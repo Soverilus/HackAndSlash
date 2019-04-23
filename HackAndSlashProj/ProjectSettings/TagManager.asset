@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - AudioController
   - Advertisement
+  - Background
   layers:
   - Default
   - TransparentFX
@@ -46,6 +47,12 @@ TagManager:
     locked: 0
   - name: Background
     uniqueID: 2936623507
+    locked: 0
+  - name: Background+1
+    uniqueID: 3775621051
+    locked: 0
+  - name: Foreground-1
+    uniqueID: 3626547553
     locked: 0
   - name: Foreground
     uniqueID: 2306864385

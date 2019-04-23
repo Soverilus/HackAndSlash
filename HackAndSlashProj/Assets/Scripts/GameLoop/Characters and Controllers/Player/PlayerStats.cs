@@ -21,6 +21,7 @@ public class PlayerStats : CharacterStats {
                 isDead = true;
                 health = 0;
                 myCC.myAnim.SetTrigger("Death");
+                mySPRColor = new Color(0f, 0f, 0f, 0f);
                 myGLC.OnDefeat();
             }
         }

@@ -16,7 +16,9 @@ public class BuyItem : MonoBehaviour {
     public int costMultiplier;
     public int costMultAt;
     Button mySelf;
+    Text myText;
     void Start() {
+        myText = GetComponentInChildren<Text>();
         myAC = GameObject.FindGameObjectWithTag("AudioController").GetComponent<AudioController>();
         realCost = cost;
         mySelf = GetComponent<Button>();
@@ -38,6 +40,13 @@ public class BuyItem : MonoBehaviour {
     }
 
     private void Update() {
+        myText.text = realCost.ToString("F0");
+        if (buyWithGold) {
+            myText.color = new Color(1f, 0.92f, 0.016f, myText.color.a);
+        }
+        else {
+            myText.color = new Color(0f, 1f, 1f, myText.color.a);
+        }
         if (PlayerPrefs.HasKey(itemName) && PlayerPrefs.GetInt(itemName) % costMultAt == 0) {
             realCost = cost + costMultiplier * PlayerPrefs.GetInt(itemName);
         }
