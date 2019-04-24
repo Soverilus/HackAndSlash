@@ -12,12 +12,14 @@ public class MenuController : MonoBehaviour {
     bool fadeAtAll = true;
     [Header("Main Menu Items")]
     public SpriteRenderer mainMenuArt;
+    public SpriteRenderer mainMenuArtTwo;
     public Text[] mainMenuTexts;
     public Image[] mainMenuButtonImages;
     public Button[] mainMenuButtons;
 
     [Header("Shop Menu Items")]
     public SpriteRenderer shopMenuArt;
+    public SpriteRenderer[] shopMenuArtExtras;
     public Text[] shopMenuTexts;
     public Image[] shopMenuButtonImages;
     public Button[] shopMenuButtons;
@@ -55,6 +57,10 @@ public class MenuController : MonoBehaviour {
     }
 
     private void Update() {
+        mainMenuArtTwo.color = mainMenuArt.color;
+        for (int i = 0; i < shopMenuArtExtras.Length; i++) {
+            shopMenuArtExtras[i].color = shopMenuArt.color;
+        }
         if (fadeAtAll) {
             if (fadeToShop) {
                 FadeToShop();

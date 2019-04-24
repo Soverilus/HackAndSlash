@@ -40,7 +40,7 @@ public class BuyItem : MonoBehaviour {
     }
 
     private void Update() {
-        myText.text = realCost.ToString("F0");
+        myText.text = Mathf.Abs(realCost).ToString("F0");
         if (buyWithGold) {
             myText.color = new Color(1f, 0.92f, 0.016f, myText.color.a);
         }
