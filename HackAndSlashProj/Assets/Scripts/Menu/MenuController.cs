@@ -82,6 +82,11 @@ public class MenuController : MonoBehaviour {
         fadeToShop = active;
     }
 
+    public void SetCredits(bool active) {
+        //set main menu to non-active
+        fadeToCredits = active;
+    }
+
     public void Main() {
         fadeToShop = false;
         fadeToCredits = false;
@@ -108,7 +113,7 @@ public class MenuController : MonoBehaviour {
     }
 
     void FadeMainMenuElements(float positive) {
-        mainMenuArt.color = new Color(mainMenuArt.color.r, mainMenuArt.color.g, mainMenuArt.color.b, mainMenuArt.color.a + positive * Time.deltaTime);
+        mainMenuArt.color = new Color(mainMenuArt.color.r, mainMenuArt.color.g, mainMenuArt.color.b, mainMenuArt.color.a + positive * Time.unscaledDeltaTime);
         if (positive > 0) {
             for (int i = 0; i < mainMenuButtons.Length; i++) {
                 mainMenuButtons[i].gameObject.SetActive(true);
@@ -122,15 +127,15 @@ public class MenuController : MonoBehaviour {
             }
         }
         for (int i = 0; i < mainMenuTexts.Length; i++) {
-            mainMenuTexts[i].color = new Color(mainMenuTexts[i].color.r, mainMenuTexts[i].color.g, mainMenuTexts[i].color.b, mainMenuTexts[i].color.a + positive * Time.deltaTime);
+            mainMenuTexts[i].color = new Color(mainMenuTexts[i].color.r, mainMenuTexts[i].color.g, mainMenuTexts[i].color.b, mainMenuTexts[i].color.a + positive * Time.unscaledDeltaTime);
         }
         for (int i = 0; i < mainMenuButtonImages.Length; i++) {
-            mainMenuButtonImages[i].color = new Color(mainMenuButtonImages[i].color.r, mainMenuButtonImages[i].color.g, mainMenuButtonImages[i].color.b, mainMenuButtonImages[i].color.a + positive * Time.deltaTime);
+            mainMenuButtonImages[i].color = new Color(mainMenuButtonImages[i].color.r, mainMenuButtonImages[i].color.g, mainMenuButtonImages[i].color.b, mainMenuButtonImages[i].color.a + positive * Time.unscaledDeltaTime);
         }
     }
 
     void FadeShopMenuElements(float positive) {
-        shopMenuArt.color = new Color(shopMenuArt.color.r, shopMenuArt.color.g, shopMenuArt.color.b, shopMenuArt.color.a + positive * Time.deltaTime);
+        shopMenuArt.color = new Color(shopMenuArt.color.r, shopMenuArt.color.g, shopMenuArt.color.b, shopMenuArt.color.a + positive * Time.unscaledDeltaTime);
         if (positive > 0) {
             for (int i = 0; i < shopMenuButtons.Length; i++) {
                 shopMenuButtons[i].gameObject.SetActive(true);
@@ -144,15 +149,15 @@ public class MenuController : MonoBehaviour {
             }
         }
         for (int i = 0; i < shopMenuTexts.Length; i++) {
-            shopMenuTexts[i].color = new Color(shopMenuTexts[i].color.r, shopMenuTexts[i].color.g, shopMenuTexts[i].color.b, shopMenuTexts[i].color.a + positive * Time.deltaTime);
+            shopMenuTexts[i].color = new Color(shopMenuTexts[i].color.r, shopMenuTexts[i].color.g, shopMenuTexts[i].color.b, shopMenuTexts[i].color.a + positive * Time.unscaledDeltaTime);
         }
         for (int i = 0; i < shopMenuButtonImages.Length; i++) {
-            shopMenuButtonImages[i].color = new Color(shopMenuButtonImages[i].color.r, shopMenuButtonImages[i].color.g, shopMenuButtonImages[i].color.b, shopMenuButtonImages[i].color.a + positive * Time.deltaTime);
+            shopMenuButtonImages[i].color = new Color(shopMenuButtonImages[i].color.r, shopMenuButtonImages[i].color.g, shopMenuButtonImages[i].color.b, shopMenuButtonImages[i].color.a + positive * Time.unscaledDeltaTime);
         }
     }
 
     void FadeCreditMenuElements(float positive) {
-        creditMenuArt.color = new Color(creditMenuArt.color.r, creditMenuArt.color.g, creditMenuArt.color.b, creditMenuArt.color.a + positive * Time.deltaTime);
+        creditMenuArt.color = new Color(creditMenuArt.color.r, creditMenuArt.color.g, creditMenuArt.color.b, creditMenuArt.color.a + positive * Time.unscaledDeltaTime);
         if (positive > 0) {
             for (int i = 0; i < creditMenuButtons.Length; i++) {
                 creditMenuButtons[i].gameObject.SetActive(true);
@@ -166,10 +171,10 @@ public class MenuController : MonoBehaviour {
             }
         }
         for (int i = 0; i < creditMenuTexts.Length; i++) {
-            creditMenuTexts[i].color = new Color(creditMenuTexts[i].color.r, creditMenuTexts[i].color.g, creditMenuTexts[i].color.b, creditMenuTexts[i].color.a + positive * Time.deltaTime);
+            creditMenuTexts[i].color = new Color(creditMenuTexts[i].color.r, creditMenuTexts[i].color.g, creditMenuTexts[i].color.b, creditMenuTexts[i].color.a + positive * Time.unscaledDeltaTime);
         }
         for (int i = 0; i < creditMenuButtonImages.Length; i++) {
-            creditMenuButtonImages[i].color = new Color(creditMenuButtonImages[i].color.r, creditMenuButtonImages[i].color.g, creditMenuButtonImages[i].color.b, creditMenuButtonImages[i].color.a + positive * Time.deltaTime);
+            creditMenuButtonImages[i].color = new Color(creditMenuButtonImages[i].color.r, creditMenuButtonImages[i].color.g, creditMenuButtonImages[i].color.b, creditMenuButtonImages[i].color.a + positive * Time.unscaledDeltaTime);
         }
     }
 
@@ -196,7 +201,7 @@ public class MenuController : MonoBehaviour {
     void StartGameUpdate() {
         if (mainMenuArt.transform.localScale.magnitude >= initialMenuScale.magnitude * 30) {
             mainMenuArt.transform.localScale = Vector3.Lerp(mainMenuArt.transform.localScale, new Vector3(32f, 32f, 32f), 1f);
-            Invoke("StartGameTrue", 2f);
+            Invoke("StartGameTrue", 0f);
         }
         else {
             Transform myTransform = mainMenuArt.transform.parent.gameObject.transform;
