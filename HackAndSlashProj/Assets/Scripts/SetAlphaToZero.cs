@@ -14,11 +14,15 @@ public class SetAlphaToZero : MonoBehaviour
 
     void Update()
     {
-        if (myIMG.color.a > 0) {
-            myIMG.color = new Color(1f, 1f, 1f, 0f);
+        if (myIMG != null) {
+            if (myIMG.color.a > 0) {
+                myIMG.color = new Color(1f, 1f, 1f, 0f);
+            }
         }
-        if (myText.color.a > 0) {
-            myText.color = new Color(1f, 1f, 1f, 0f);
+        if (myText != null) {
+            if (myText.color.a > 0) {
+                myText.color = new Color(1f, 1f, 1f, 0f);
+            }
         }
     }
 }

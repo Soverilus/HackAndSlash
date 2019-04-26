@@ -15,7 +15,6 @@ public class PlayerStats : CharacterStats {
                 if (PlayerPrefs.GetInt("RevivePotion") > 0) {
                     PlayerPrefs.SetInt("RevivePotion", PlayerPrefs.GetInt("RevivePotion") - 1);
                 }
-                health = maxHealth;
             }
             else if (!isDead){
                 isDead = true;

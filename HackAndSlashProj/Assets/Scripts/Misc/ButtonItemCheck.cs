@@ -14,32 +14,36 @@ public class ButtonItemCheck : MonoBehaviour
     [SerializeField]
     int potionAmount;
 
-    void Start()
-    {
+    void Start() {
         myText = GetComponentInChildren<Text>();
         myText.color = Color.yellow;
         myCS = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>();
         myActions = GameObject.FindGameObjectWithTag("Player").GetComponent<OnActionPress>();
         myGLC = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameLoopController>();
-        if (PlayerPrefs.HasKey("Inf" + itemName)) {
-            potionAmount += PlayerPrefs.GetInt("Inf" + itemName);
-        }
         if (myGLC.ItemExists(itemName)) {
             gameObject.GetComponentInParent<Button>().interactable = true;
             potionAmount = myGLC.ItemAmount(itemName);
-            if (PlayerPrefs.HasKey("Inf" + itemName)) {
-                potionAmount += PlayerPrefs.GetInt("Inf" + itemName);
-            }
         }
         else {
             gameObject.GetComponentInParent<Button>().interactable = false;
+        }
+        if (itemName == "RevivePotion") {
+            //potionAmount;
         }
     }
 
     private void Update() {
         myText.text = potionAmount.ToString("F0");
-        if (myCS.gameObject.GetComponent<PlayerStats>().lives <= 0 && itemName == "RevivePotion") {
-            gameObject.GetComponent<Button>().interactable = false;
+        if (itemName == "RevivePotion") {
+            if (myCS.GetComponent<PlayerStats>().lives < potionAmount) {
+                
+                    DrinkPotion();
+                    Debug.Log("drank potion");
+                
+            }
+            if (myCS.gameObject.GetComponent<PlayerStats>().lives <= 0) {
+                gameObject.GetComponent<Button>().interactable = false;
+            }
         }
     }
 

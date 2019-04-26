@@ -104,7 +104,7 @@ public class CharacterStats : MonoBehaviour {
     }
 
     protected virtual void Update() {
-            ColorChange();
+        ColorChange();
         if (hasStateChanged) {
             OnStateChange();
         }
@@ -305,7 +305,7 @@ public class CharacterStats : MonoBehaviour {
         myAC.PlayAudioClip("HIT");
     }
     protected virtual void StunnedDamage(int damage, GameObject myAttacker) {
-        health -= 3*Mathf.Abs(damage);
+        health -= 3 * Mathf.Abs(damage);
         myAC.PlayAudioClip("HIT");
         myAC.PlayAudioClip("HIT");
     }
@@ -321,6 +321,10 @@ public class CharacterStats : MonoBehaviour {
     }
     public virtual void PowerPotion() {
         baseDamage += 10;
+        myAC.PlayAudioClip("POTION", false);
+    }
+    public virtual void RevivePotion() {
+        health = maxHealth;
         myAC.PlayAudioClip("POTION", false);
     }
 }

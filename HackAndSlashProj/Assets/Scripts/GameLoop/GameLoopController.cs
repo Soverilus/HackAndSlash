@@ -6,6 +6,8 @@ public class GameLoopController : MonoBehaviour {
     PlayerStats myCS;
     EnemyStats enemyCS;
     CountdownToFight myAdvert;
+    public GameObject myWinLose;
+    WinLose myWL;
     string loadScene;
     public int rewardTier;
     bool died = false;
@@ -13,6 +15,7 @@ public class GameLoopController : MonoBehaviour {
         PlayerPrefs.SetInt("DispAdvert", Random.Range(3, 7) + PlayerPrefs.GetInt("GameRound"));
     }
     public void Start() {
+        myWL = myWinLose.GetComponent<WinLose>();
         myAdvert = GameObject.FindGameObjectWithTag("Advertisement").GetComponent<CountdownToFight>();
         if (!PlayerPrefs.HasKey("GameRound")) {
             PlayerPrefs.SetInt("GameRound", 1);
@@ -48,8 +51,7 @@ public class GameLoopController : MonoBehaviour {
             }
         }
         else {
-            loadScene = "Menu";
-            Invoke("LoadScene", 3f);
+            Debug.LogWarning("No enemy or player found");
         }
     }
 
@@ -90,12 +92,21 @@ public class GameLoopController : MonoBehaviour {
     }
 
     void AddGold() {
-        PlayerPrefs.SetInt("Gold", PlayerPrefs.GetInt("Gold") + (PlayerPrefs.GetInt("GameRound") + Random.Range(1, 11)) * rewardTier);
+        myWL.SetGLC(this);
+        float goldInc = (PlayerPrefs.GetInt("GameRound") + Random.Range(1, 11)) * rewardTier;
+        float shardInc = Mathf.Clamp(Random.Range(-10, 1),0,1) * ((PlayerPrefs.GetInt("GameRound") + Random.Range(1, 11)) * rewardTier);
+        PlayerPrefs.SetInt("Gold", PlayerPrefs.GetInt("Gold") + Mathf.RoundToInt(goldInc));
+        PlayerPrefs.SetInt("Shards", PlayerPrefs.GetInt("Shards") + Mathf.RoundToInt(shardInc));
+        myWL.SetGoldAndShardCounts(Mathf.Round(goldInc), Mathf.Round(shardInc));
     }
 
     public void OnVictory() {
+        myWL.SetVictory(true);
+        DisableAllCharacter();
+        loadScene = "GoblinFight";
+        Invoke("LoadScene", 3f);
         died = true;
-        AddGold();
+        
         PlayerPrefs.SetInt("PlayerHealth", myCS.GetHealth());
         if (PlayerPrefs.HasKey("GameRound")) {
             PlayerPrefs.SetInt("GameRound", PlayerPrefs.GetInt("GameRound") + 1);
@@ -103,20 +114,31 @@ public class GameLoopController : MonoBehaviour {
         else {
             PlayerPrefs.SetInt("GameRound", 1);
         }
-            loadScene = "GoblinFight";
-            Invoke("LoadScene", 3f);
     }
     public void OnDefeat() {
+        myWL.SetVictory(false);
+        DisableAllCharacter();
+        loadScene = "Menu";
+        Invoke("LoadScene", 3f);
         died = true;
+        rewardTier = 0;
         PlayerPrefs.SetInt("GameRound", 1);
         SetAdvertisementRound();
         PlayerPrefs.SetInt("PlayerHealth", myCS.GetMaxHealth());
-        loadScene = "Menu";
-        Invoke("LoadScene", 3f);
+    }
+
+    void DisableAllCharacter() {
+        myCS.gameObject.GetComponent<OnActionPress>().enabled = false;
+        enemyCS.GetComponent<EnemyController>().EnableAI(false);
     }
 
     void LoadScene() {
+        myWinLose.SetActive(true);
+        AddGold();
         PlayerPrefs.Save();
+    }
+
+    public void TrueLoadScene() {
         SceneManager.LoadScene(loadScene);
     }
 }
