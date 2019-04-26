@@ -60,11 +60,11 @@ public class OnActionPress : MonoBehaviour {
 
     void GetInpTouch() {
         for (int i = 0; i < Input.touches.Length; i++) {
-            if (Input.touches[i].position.x >= width) {
+            if (Input.touches[i].position.x <= width) {
                 OnRightTouch(true, Input.touches[i].phase);
             }
 
-            else if (Input.touches[i].position.x < width) {
+            else if (Input.touches[i].position.x > width) {
                 OnRightTouch(false, Input.touches[i].phase);
             }
         }
