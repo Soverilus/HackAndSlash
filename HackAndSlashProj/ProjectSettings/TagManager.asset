@@ -8,6 +8,7 @@ TagManager:
   - AudioController
   - Advertisement
   - Background
+  - WinLose
   layers:
   - Default
   - TransparentFX
@@ -42,8 +43,8 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Default
-    uniqueID: 0
+  - name: BehindAll
+    uniqueID: 2151753693
     locked: 0
   - name: Background
     uniqueID: 2936623507
@@ -56,4 +57,7 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 2306864385
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0

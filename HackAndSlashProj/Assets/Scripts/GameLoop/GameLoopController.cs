@@ -15,6 +15,9 @@ public class GameLoopController : MonoBehaviour {
         PlayerPrefs.SetInt("DispAdvert", Random.Range(3, 7) + PlayerPrefs.GetInt("GameRound"));
     }
     public void Start() {
+        if (myWinLose == null) {
+            myWinLose = GameObject.FindGameObjectWithTag("WinLose");
+        }
         myWL = myWinLose.GetComponent<WinLose>();
         myAdvert = GameObject.FindGameObjectWithTag("Advertisement").GetComponent<CountdownToFight>();
         if (!PlayerPrefs.HasKey("GameRound")) {
@@ -93,11 +96,12 @@ public class GameLoopController : MonoBehaviour {
 
     void AddGold() {
         myWL.SetGLC(this);
-        float goldInc = (PlayerPrefs.GetInt("GameRound") + Random.Range(1, 11)) * rewardTier;
+        float goldInc = (PlayerPrefs.GetInt("GameRound") * PlayerPrefs.GetInt("GameRound") + Random.Range(1, 11)) * rewardTier;
         float shardInc = Mathf.Clamp(Random.Range(-10, 1),0,1) * ((PlayerPrefs.GetInt("GameRound") + Random.Range(1, 11)) * rewardTier);
         PlayerPrefs.SetInt("Gold", PlayerPrefs.GetInt("Gold") + Mathf.RoundToInt(goldInc));
         PlayerPrefs.SetInt("Shards", PlayerPrefs.GetInt("Shards") + Mathf.RoundToInt(shardInc));
         myWL.SetGoldAndShardCounts(Mathf.Round(goldInc), Mathf.Round(shardInc));
+        myWL.activeNow = true;
     }
 
     public void OnVictory() {

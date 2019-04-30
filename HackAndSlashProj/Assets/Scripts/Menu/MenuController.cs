@@ -229,7 +229,7 @@ public class MenuController : MonoBehaviour {
         }
     }
     void StartGameTrue() {
-        SceneManager.LoadScene("GoblinFight");
+        SceneManager.LoadScene("Instructions");
     }
 
     public void QuitApp() {
