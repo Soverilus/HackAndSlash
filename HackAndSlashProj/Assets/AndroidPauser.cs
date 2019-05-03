@@ -13,7 +13,7 @@ public class AndroidPauser : MonoBehaviour
         isAndroid = false;
 #endif
 
-        if (isAndroid) {
+        if (!isAndroid) {
             Destroy(gameObject);
         }
     }
